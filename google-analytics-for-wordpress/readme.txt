@@ -4,7 +4,7 @@ Donate link: http://www.wpbeginner.com/wpbeginner-needs-your-help/
 Tags: WordPress analytics, google analytics, google analytics dashboard, google analytics widget, Website Analytics
 Requires at least: 5.6.0
 Tested up to: 6.6.2
-Stable tag: 9.2.0
+Stable tag: 9.2.1
 Requires PHP: 7.2
 License: GPL v3
 
@@ -119,6 +119,9 @@ MonsterInsights&reg; is a registered trademark of MonsterInsights LLC. When writ
 4. Want more features? <a href="https://www.monsterinsights.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion">Purchase MonsterInsights Pro</a>!
 
 == Changelog ==
+= 9.2.1: October 31, 2024 =
+- Fixed: Fixed a bug in the Headline Analyzer tool causing errors in WordPress versions lower than 6.6
+
 = 9.2.0: October 23, 2024 =
 - New: Country and region report to see where and how your visitors find your website
 - New: Advanced tracking options for users of Google Tag Manager

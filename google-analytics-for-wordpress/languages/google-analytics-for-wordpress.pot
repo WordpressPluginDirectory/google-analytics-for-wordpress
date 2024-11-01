@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.2.0\n"
+"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 9.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-for-wordpress-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-10-22T14:00:19+00:00\n"
+"POT-Creation-Date: 2024-10-31T16:15:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: google-analytics-for-wordpress\n"
@@ -3610,7 +3610,7 @@ msgstr ""
 
 #: src/modules/about/components/monsterinsights-AboutTabLiteVsPro.vue:125
 #: src/modules/settings/components/tabs/monsterinsights-SettingsTabPublisher.vue:80
-#: src/plugins/monsterinsights-Headline-Analyzer/index.js:24
+#: src/plugins/monsterinsights-Headline-Analyzer/index.js:25
 msgctxt "google-analytics-for-wordpress"
 msgid "Headline Analyzer"
 msgstr ""
@@ -9843,7 +9843,7 @@ msgctxt "google-analytics-for-wordpress"
 msgid "This Block requires WooCommerce."
 msgstr ""
 
-#: src/plugins/monsterinsights-Headline-Analyzer/index.js:30
+#: src/plugins/monsterinsights-Headline-Analyzer/index.js:31
 msgctxt "google-analytics-for-wordpress"
 msgid "This headline analyzer is part of MonsterInsights to help you increase your traffic. See your %1swebsite traffic reports%2s."
 msgstr ""
@@ -9955,7 +9955,7 @@ msgctxt "google-analytics-for-wordpress"
 msgid "Word Count"
 msgstr ""
 
-#: src/plugins/monsterinsights-Headline-Analyzer/index.js:25
+#: src/plugins/monsterinsights-Headline-Analyzer/index.js:26
 msgctxt "google-analytics-for-wordpress"
 msgid "Write your post title to see the analyzer data. This Headline Analyzer tool enables you to write irresistible SEO headlines that drive traffic, shares, and rank better in search results."
 msgstr ""
