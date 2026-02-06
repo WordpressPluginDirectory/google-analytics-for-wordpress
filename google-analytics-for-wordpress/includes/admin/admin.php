@@ -65,6 +65,16 @@ function monsterinsights_admin_menu()
 	// then settings page
 	add_submenu_page( $parent_slug, __( 'MonsterInsights', 'google-analytics-for-wordpress' ), __( 'Settings', 'google-analytics-for-wordpress' ), 'monsterinsights_save_settings', 'monsterinsights_settings', 'monsterinsights_settings_page' );
 
+	/**
+	 * Output the Custom Dashboard app mount node.
+	 *
+	 * @return void
+	 */
+	function monsterinsights_custom_dashboard_page() {
+		do_action( 'monsterinsights_head' );
+		echo '<div id="monsterinsights-custom-dashboard-app" class="mi-custom-dashboard-app">Loading</div>';
+	}
+    
 	// Add dashboard submenu.
 	add_submenu_page( 'index.php', __( 'General Reports:', 'google-analytics-for-wordpress' ), __( 'Insights', 'google-analytics-for-wordpress' ), 'monsterinsights_view_dashboard', 'admin.php?page=monsterinsights_reports' );
 
@@ -118,7 +128,7 @@ function monsterinsights_admin_menu()
 	add_submenu_page($parent_slug, __('SEO', 'google-analytics-for-wordpress'), __('SEO', 'google-analytics-for-wordpress'), 'manage_options', $seo_url);
 
 	// Google PAX
-	add_submenu_page($parent_slug, __('Google Ads', 'google-analytics-for-wordpress'), __('Google Ads', 'google-analytics-for-wordpress'), 'monsterinsights_view_dashboard', $submenu_base . '#/google-ads');
+	add_submenu_page($parent_slug, __('Google Ads', 'google-analytics-for-wordpress'), __('Google Ads', 'google-analytics-for-wordpress') . $new_indicator, 'monsterinsights_view_dashboard', $submenu_base . '#/google-ads');
 
 	// then tools
 	add_submenu_page($parent_slug, __('Tools:', 'google-analytics-for-wordpress'), __('Tools', 'google-analytics-for-wordpress'), 'manage_options', $submenu_base . '#/tools');

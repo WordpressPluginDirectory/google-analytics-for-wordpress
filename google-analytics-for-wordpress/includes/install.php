@@ -151,6 +151,10 @@ class MonsterInsights_Install {
 			if ( version_compare( $version, '7.15.0', '<' ) ) {
 				$this->v7150_upgrades();
 			}
+			
+			if ( version_compare( $version, '9.11.0', '<' ) ) {
+				$this->v9110_upgrades();
+			}
 
 			// Do not use. See monsterinsights_after_install_routine comment below.
 			do_action( 'monsterinsights_after_existing_upgrade_routine', $version );
@@ -264,7 +268,11 @@ class MonsterInsights_Install {
 		);
 
 		update_option( 'monsterinsights_over_time', $data, false );
-
+		
+		/*  Custom DB Schemas */
+		// Tracking
+		MonsterInsights_Tracking::setup_tracking_schema();
+		
 		// Let addons + MI Pro/Lite hook in here. @todo: doc as nonpublic
 		do_action( 'monsterinsights_after_new_install_routine', MONSTERINSIGHTS_VERSION );
 	}
@@ -307,6 +315,8 @@ class MonsterInsights_Install {
 			'email_summaries'                          => 'on',
 			'summaries_html_template'                  => 'yes',
 			'summaries_email_addresses'                => $admin_email_array,
+			'summaries_show_blog_posts'                => 'yes',
+			'summaries_show_update_notices'            => 'yes',
 			'exception_alert_email_addresses'          => $admin_email_array,
 			'automatic_updates'                        => 'all',
 			'anonymous_data'                           => 0,
@@ -878,5 +888,18 @@ class MonsterInsights_Install {
 		if ( empty( $this->new_settings['gtagtracker_compatibility_mode'] ) ) {
 			$this->new_settings['gtagtracker_compatibility_mode'] = true;
 		}
+	}
+	
+	/**
+	 * Upgrade routine for 9.10.0
+	 * @return void
+	 */
+	public function v9110_upgrades() {
+		if ( !class_exists( 'MonsterInsights_Tracking' ) ) {
+			require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/tracking/class-monsterinsights-tracking.php';
+		}
+		
+		// Create new tracking DB schema
+		MonsterInsights_Tracking::setup_tracking_schema();
 	}
 }

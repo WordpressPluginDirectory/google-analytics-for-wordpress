@@ -4,6 +4,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+/**
+ * @deprecated The MP integration has been deprecated. Use the newer tracking class instead
+ * @see MonsterInsights_Tracking
+ * @see monsterinsights_tracking()
+ */
 class MonsterInsights_Measurement_Protocol_V4 {
 	private static $instance;
 
@@ -71,7 +76,13 @@ class MonsterInsights_Measurement_Protocol_V4 {
 			$this->get_base_url()
 		);
 	}
-
+	
+	/**
+	 * @deprecated
+	 * @param $args
+	 *
+	 * @return bool|mixed|string
+	 */
 	private function get_client_id( $args ) {
 		if ( ! empty( $args['client_id'] ) ) {
 			return $args['client_id'];
@@ -214,6 +225,20 @@ class MonsterInsights_Measurement_Protocol_V4 {
 	}
 }
 
+/**
+ * @deprecated The MP integration has been deprecated. Use the newer tracking class instead
+ * @see MonsterInsights_Tracking
+ * @see monsterinsights_tracking()
+ */
 function monsterinsights_mp_collect_v4( $args ) {
-	return MonsterInsights_Measurement_Protocol_V4::get_instance()->collect( $args );
+	_deprecated_function(__FUNCTION__, "9.10.0", "monsterinsights_tracking()->send()");
+	
+	// Transform args for backwards compat, send:
+	if ( empty( $args ) || empty( $args['events'] ) ) {
+		return;
+	}
+	
+	foreach ( $args['events'] as $raw_event ) {
+		monsterinsights_tracking()->send( $raw_event['name'], $raw_event['params'] ?? [] );
+	}
 }

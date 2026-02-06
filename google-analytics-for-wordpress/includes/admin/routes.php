@@ -289,8 +289,33 @@ class MonsterInsights_Rest_Routes {
 			return $value;
 		}
 
-		return sanitize_text_field( $value );
+		$value = sanitize_text_field( $value );
+
+		// Handle custom value manipulation.
+		$value = $this->handle_custom_value_manipulation( $field, $value );
+
+		return $value;
 	}
+
+	/**
+	 * Handle custom value manipulation for specific fields.
+	 *
+	 * @param string $field The key of the field.
+	 * @param mixed  $value The value to manipulate.
+	 *
+	 * @return mixed The manipulated value.
+	 */
+	private function handle_custom_value_manipulation( $field, $value ) {
+		// Ensure ads_google_conversion_id starts with 'AW-'.
+		if ( 'ads_google_conversion_id' === $field && ! empty( $value ) ) {
+			if ( 0 !== strpos( $value, 'AW-' ) ) {
+				$value = 'AW-' . $value;
+			}
+		}
+
+		return $value;
+	}
+
 	/**
 	 * Return the addons as an array instead of JSON format.
 	 *
