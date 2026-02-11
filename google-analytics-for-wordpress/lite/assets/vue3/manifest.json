@@ -84,7 +84,7 @@
     "src": "src/assets/icons/templates/exactmetrics/marketer.svg"
   },
   "src/assets/icons/templates/exactmetrics/publisher.svg": {
-    "file": "assets/publisher.svg",
+    "file": "assets/publisher2.svg",
     "src": "src/assets/icons/templates/exactmetrics/publisher.svg"
   },
   "src/assets/icons/templates/exactmetrics/small-business.svg": {
@@ -104,7 +104,7 @@
     "src": "src/assets/icons/templates/monsterinsights/marketer.svg"
   },
   "src/assets/icons/templates/monsterinsights/publisher.svg": {
-    "file": "assets/publisher2.svg",
+    "file": "assets/publisher.svg",
     "src": "src/assets/icons/templates/monsterinsights/publisher.svg"
   },
   "src/assets/icons/templates/monsterinsights/small-business.svg": {

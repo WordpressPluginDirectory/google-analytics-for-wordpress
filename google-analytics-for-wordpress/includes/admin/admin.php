@@ -74,7 +74,7 @@ function monsterinsights_admin_menu()
 		do_action( 'monsterinsights_head' );
 		echo '<div id="monsterinsights-custom-dashboard-app" class="mi-custom-dashboard-app">Loading</div>';
 	}
-    
+
 	// Add dashboard submenu.
 	add_submenu_page( 'index.php', __( 'General Reports:', 'google-analytics-for-wordpress' ), __( 'Insights', 'google-analytics-for-wordpress' ), 'monsterinsights_view_dashboard', 'admin.php?page=monsterinsights_reports' );
 

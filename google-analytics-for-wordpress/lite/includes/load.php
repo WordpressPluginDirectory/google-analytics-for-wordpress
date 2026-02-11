@@ -8,9 +8,6 @@ add_action('init', function () {
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/api/class-monsterinsights-api-reports.php';
 	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/api/class-monsterinsights-api-tracking.php';
 	
-	// Load Tracking classes
-	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/tracking/class-monsterinsights-tracking.php';
-	require_once MONSTERINSIGHTS_PLUGIN_DIR . 'includes/tracking/class-monsterinsights-tracking-event.php';
 	
 	if ( is_admin() ) {
 		require_once MONSTERINSIGHTS_PLUGIN_DIR . 'lite/includes/admin/tools.php';
