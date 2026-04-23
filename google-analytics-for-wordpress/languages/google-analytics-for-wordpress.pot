@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 10.1.2\n"
+"Project-Id-Version: Google Analytics for WordPress by MonsterInsights 10.1.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/google-analytics-for-wordpress-working-dir\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-31T14:36:52+00:00\n"
+"POT-Creation-Date: 2026-04-22T16:04:26+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.13.0-alpha\n"
 "X-Domain: google-analytics-for-wordpress\n"
@@ -9703,17 +9703,25 @@ msgstr ""
 msgid "Skip %s Deactivate"
 msgstr ""
 
-#: includes/admin/class-monsterinsights-onboarding.php:340
+#: includes/admin/class-monsterinsights-onboarding.php:116
+msgid "Invalid onboarding key"
+msgstr ""
+
+#: includes/admin/class-monsterinsights-onboarding.php:129
+msgid "Insufficient permissions"
+msgstr ""
+
+#: includes/admin/class-monsterinsights-onboarding.php:353
 #: includes/connect.php:100
 #: includes/connect.php:123
 msgid "Please enter your license key to connect."
 msgstr ""
 
-#: includes/admin/class-monsterinsights-onboarding.php:348
+#: includes/admin/class-monsterinsights-onboarding.php:361
 msgid "Failed to generate connect URL."
 msgstr ""
 
-#: includes/admin/class-monsterinsights-onboarding.php:492
+#: includes/admin/class-monsterinsights-onboarding.php:505
 msgid "There was an error connecting to the remote key API. Please try again later."
 msgstr ""
 
@@ -10233,7 +10241,7 @@ msgid "Hey - we noticed you've been using %1$s for a while - that's great! Could
 msgstr ""
 
 #: includes/admin/routes.php:210
-#: includes/ppc/google/class-monsterinsights-google-ads.php:271
+#: includes/ppc/google/class-monsterinsights-google-ads.php:283
 msgid "You do not have permission to update this setting."
 msgstr ""
 
@@ -10679,17 +10687,17 @@ msgstr ""
 msgid "Oops! We could not automatically install an upgrade. Please install manually by visiting %1$smonsterinsights.com%2$s."
 msgstr ""
 
-#: includes/connect.php:175
-#: includes/connect.php:181
-#: includes/connect.php:234
+#: includes/connect.php:180
+#: includes/connect.php:186
+#: includes/connect.php:239
 msgid "Plugin installed & activated."
 msgstr ""
 
-#: includes/connect.php:204
+#: includes/connect.php:209
 msgid "You are not licensed."
 msgstr ""
 
-#: includes/connect.php:238
+#: includes/connect.php:243
 msgid "Please activate MonsterInsights Pro from your WordPress plugins page."
 msgstr ""
 
@@ -10723,12 +10731,12 @@ msgstr ""
 msgid "Sent from %s"
 msgstr ""
 
-#: includes/frontend/frontend.php:327
+#: includes/frontend/frontend.php:369
 msgid "Tracking is Disabled for Administrators"
 msgstr ""
 
 #. Translators: %s is the link to the article where more details about tracking are listed.
-#: includes/frontend/frontend.php:340
+#: includes/frontend/frontend.php:382
 #, php-format
 msgid "To keep stats accurate, we do not load Google Analytics scripts for admin users. %1$sLearn More &raquo;%2$s"
 msgstr ""
@@ -14552,23 +14560,31 @@ msgstr ""
 msgid "To use this feature, please connect to MonsterInsights. <a href=\"%s\">Click here to connect.</a>"
 msgstr ""
 
-#: includes/ppc/google/class-monsterinsights-google-ads.php:173
+#: includes/ppc/google/class-monsterinsights-google-ads.php:172
+msgid "You do not have permission to reset the Google Ads experience."
+msgstr ""
+
+#: includes/ppc/google/class-monsterinsights-google-ads.php:179
 msgid "Google Ads experience reset successfully."
 msgstr ""
 
-#: includes/ppc/google/class-monsterinsights-google-ads.php:196
+#: includes/ppc/google/class-monsterinsights-google-ads.php:202
 msgid "Conversion tracking id not found."
 msgstr ""
 
-#: includes/ppc/google/class-monsterinsights-google-ads.php:277
+#: includes/ppc/google/class-monsterinsights-google-ads.php:255
+msgid "You do not have permission to retrieve the Google Ads access token."
+msgstr ""
+
+#: includes/ppc/google/class-monsterinsights-google-ads.php:289
 msgid "Invalid request."
 msgstr ""
 
-#: includes/ppc/google/class-monsterinsights-google-ads.php:302
+#: includes/ppc/google/class-monsterinsights-google-ads.php:314
 msgid "You do not have permission to view these settings."
 msgstr ""
 
-#: includes/ppc/google/class-monsterinsights-google-ads.php:318
+#: includes/ppc/google/class-monsterinsights-google-ads.php:330
 msgid "You do not have permission to check conversions."
 msgstr ""
 

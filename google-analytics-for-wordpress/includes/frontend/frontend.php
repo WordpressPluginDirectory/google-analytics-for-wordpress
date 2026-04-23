@@ -161,6 +161,23 @@ function monsterinsights_prevent_loading_frontend_reports() {
 }
 
 /**
+ * Whether the built React admin bar bundle exists on disk.
+ *
+ * The top-level "Insights" admin bar button is interactive only when the
+ * React app is enqueued and mounts. If the bundle is missing (e.g. a
+ * release packaging gap), the rendered link has no click handler and
+ * appears broken to users. This helper lets callers gate on availability.
+ *
+ * @return bool
+ */
+function monsterinsights_admin_bar_assets_available() {
+	$version    = monsterinsights_is_pro_version() ? 'pro' : 'lite';
+	$asset_file = MONSTERINSIGHTS_PLUGIN_DIR . "{$version}/assets/admin-bar/index.asset.php";
+
+	return file_exists( $asset_file );
+}
+
+/**
  * Add an admin bar menu item on the frontend.
  *
  * @return void
@@ -171,13 +188,26 @@ function monsterinsights_add_admin_bar_menu() {
 		return;
 	}
 
+	// If the React admin bar bundle is missing, skip adding the button —
+	// otherwise it renders as an inert link and looks broken. The
+	// "Insights" entry under wp-logo (see em-admin.php) still works.
+	if ( ! monsterinsights_admin_bar_assets_available() ) {
+		return;
+	}
+
 	global $wp_admin_bar;
+
+	// Fallback href so the button degrades to navigation if the React
+	// app fails to mount for any reason (JS error, CSP, extension).
+	$reports_url = is_network_admin()
+		? add_query_arg( 'page', 'monsterinsights_overview_report', network_admin_url( 'admin.php' ) )
+		: add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) );
 
 	$args = array(
 		'id'    => 'monsterinsights_frontend_button',
 		'title' => '<span class="ab-icon dashicons-before dashicons-chart-bar"></span> Insights',
 		// Maybe allow translation?
-		'href'  => '#',
+		'href'  => $reports_url,
 	);
 
 	if ( method_exists( $wp_admin_bar, 'add_menu' ) ) {
@@ -214,7 +244,7 @@ function monsterinsights_frontend_admin_bar_scripts() {
 	$version = monsterinsights_is_pro_version() ? 'pro' : 'lite';
 	$asset_file = MONSTERINSIGHTS_PLUGIN_DIR . "{$version}/assets/admin-bar/index.asset.php";
 
-	if (!file_exists($asset_file)) {
+	if ( ! monsterinsights_admin_bar_assets_available() ) {
 		return;
 	}
 
@@ -249,40 +279,52 @@ function monsterinsights_frontend_admin_bar_scripts() {
 		plugin_dir_path( MONSTERINSIGHTS_PLUGIN_FILE ) . $version . '/languages'
 	);
 
-	// Localize data (same structure as Vue version for compatibility)
-	$page_title = is_singular() ? get_the_title() : monsterinsights_get_page_title();
-	$site_auth = MonsterInsights()->auth->get_viewname();
-	$ms_auth = is_multisite() && MonsterInsights()->auth->get_network_viewname();
+	// Skip localizing the shared `monsterinsights` global if another MI app already owns it —
+	// otherwise this admin-bar payload would clobber config like relay_api_url / license / reporting_api.
+	$competing_handles = array(
+		'monsterinsights-vue-script',
+		'monsterinsights-vue-reports',
+		'monsterinsights-vue-widget',
+		'monsterinsights-vue3-custom-dashboard',
+		'monsterinsights-vue3-reports',
+	);
 
-	// Check if any of the other admin scripts are enqueued, if so, use their object.
-	if ( ! wp_script_is( 'monsterinsights-vue-script' ) && ! wp_script_is( 'monsterinsights-vue-reports' ) && ! wp_script_is( 'monsterinsights-vue-widget' ) && ! wp_script_is( 'monsterinsights-vue3-custom-dashboard' ) ) {
-		$reports_url = is_network_admin() ? add_query_arg( 'page', 'monsterinsights_overview_report', network_admin_url( 'admin.php' ) ) : add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) );
-		wp_localize_script(
-			'monsterinsights-admin-bar',
-			'monsterinsights',
-			array(
-				'ajax'                 => admin_url( 'admin-ajax.php' ),
-				'nonce'                => wp_create_nonce( 'mi-admin-nonce' ),
-				'network'              => is_network_admin(),
-				'assets'               => plugins_url( $version . '/assets/admin-bar', MONSTERINSIGHTS_PLUGIN_FILE ),
-				'addons_url'           => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/addons' ) : admin_url( 'admin.php?page=monsterinsights_settings#/addons' ),
-				'page_id'              => is_singular() ? get_the_ID() : false,
-				'page_title'           => $page_title,
-				'plugin_version'       => MONSTERINSIGHTS_VERSION,
-				'shareasale_id'        => monsterinsights_get_shareasale_id(),
-				'shareasale_url'       => monsterinsights_get_shareasale_url( monsterinsights_get_shareasale_id(), '' ),
-				'is_admin'             => is_admin(),
-				'reports_url'          => $reports_url,
-				'authed'               => $site_auth || $ms_auth,
-				'auth_connect_url'     => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
-				'getting_started_url'  => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/about/getting-started' ) : admin_url( 'admin.php?page=monsterinsights_settings#/about/getting-started' ),
-				'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
-				'roles_manage_options' => monsterinsights_get_manage_options_roles(),
-				'user_roles'           => $current_user->roles,
-				'roles_view_reports'   => monsterinsights_get_option('view_reports'),
-			)
-		);
+	foreach ( $competing_handles as $handle ) {
+		if ( wp_script_is( $handle ) ) {
+			return;
+		}
 	}
+
+	// Localize data (same structure as Vue version for compatibility)
+	$page_title  = is_singular() ? get_the_title() : monsterinsights_get_page_title();
+	$site_auth   = MonsterInsights()->auth->get_viewname();
+	$ms_auth     = is_multisite() && MonsterInsights()->auth->get_network_viewname();
+	$reports_url = is_network_admin() ? add_query_arg( 'page', 'monsterinsights_overview_report', network_admin_url( 'admin.php' ) ) : add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) );
+	wp_localize_script(
+		'monsterinsights-admin-bar',
+		'monsterinsights',
+		array(
+			'ajax'                 => admin_url( 'admin-ajax.php' ),
+			'nonce'                => wp_create_nonce( 'mi-admin-nonce' ),
+			'network'              => is_network_admin(),
+			'assets'               => plugins_url( $version . '/assets/admin-bar', MONSTERINSIGHTS_PLUGIN_FILE ),
+			'addons_url'           => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/addons' ) : admin_url( 'admin.php?page=monsterinsights_settings#/addons' ),
+			'page_id'              => is_singular() ? get_the_ID() : false,
+			'page_title'           => $page_title,
+			'plugin_version'       => MONSTERINSIGHTS_VERSION,
+			'shareasale_id'        => monsterinsights_get_shareasale_id(),
+			'shareasale_url'       => monsterinsights_get_shareasale_url( monsterinsights_get_shareasale_id(), '' ),
+			'is_admin'             => is_admin(),
+			'reports_url'          => $reports_url,
+			'authed'               => $site_auth || $ms_auth,
+			'auth_connect_url'     => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
+			'getting_started_url'  => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/about/getting-started' ) : admin_url( 'admin.php?page=monsterinsights_settings#/about/getting-started' ),
+			'wizard_url'           => is_network_admin() ? network_admin_url( 'index.php?page=monsterinsights-onboarding' ) : admin_url( 'index.php?page=monsterinsights-onboarding' ),
+			'roles_manage_options' => monsterinsights_get_manage_options_roles(),
+			'user_roles'           => $current_user->roles,
+			'roles_view_reports'   => monsterinsights_get_option('view_reports'),
+		)
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'monsterinsights_frontend_admin_bar_scripts' );
