@@ -45,6 +45,7 @@ class HierarchicalTermSelector extends _wordpress_element__WEBPACK_IMPORTED_MODU
         className: "editor-post-taxonomies__hierarchical-terms-choice",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.CheckboxControl, {
           checked: true,
+          __nextHasNoMarginBottom: true,
           label: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.unescape)(term.name)
         })
       }, term.id);
@@ -148,7 +149,7 @@ function PopularPostsThemePickerControl({
   const instanceId = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_4__.useInstanceId)(PopularPostsThemePickerControl);
   const id = `inspector-monsterinsights-popular-posts-theme-control-${instanceId}`;
   const onChangeValue = event => onChange(event.target.value);
-  let slides = [];
+  const slides = [];
   let groupBreakIndex = 0;
   let currentIndex = 0;
   let selectedSlide = 0;
@@ -204,6 +205,7 @@ function PopularPostsThemePickerControl({
   return !(0,lodash__WEBPACK_IMPORTED_MODULE_0__.isEmpty)(options) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.BaseControl, {
     id: id,
     help: help,
+    __nextHasNoMarginBottom: true,
     className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(className, 'monsterinsights-theme-picker'),
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(pure_react_carousel__WEBPACK_IMPORTED_MODULE_6__.CarouselProvider, {
       naturalSlideWidth: 250,
@@ -260,7 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 
-let icons = {};
+const icons = {};
 icons.checkmark = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
   width: "24",
   height: "20",
@@ -327,7 +329,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 
-let icons = {};
+const icons = {};
 icons.inlinepop = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
   width: "20",
   height: "16",
@@ -958,7 +960,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       if ('undefined' !== typeof themes.themes) {
         for (const slug in themes.themes) {
           if (themes.themes.hasOwnProperty(slug)) {
-            themes.themes[slug]['value'] = slug;
+            themes.themes[slug].value = slug;
           }
         }
         return actions.setThemes(themes);
@@ -971,6 +973,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
  * Register block
  */
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_3__.registerBlockType)(blockId, {
+  apiVersion: 3,
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Inline Popular Posts', "google-analytics-for-wordpress"),
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Add inline popular posts from MonsterInsights', "google-analytics-for-wordpress"),
   category: 'widgets',
@@ -1076,10 +1079,10 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       color: '#000000'
     }];
     const loadedThemes = 'undefined' !== typeof themes.themes ? themes.themes : {};
-    const defaultSelected = 'undefined' === typeof props.attributes['theme'] ? themes.selected : theme;
+    const defaultSelected = 'undefined' === typeof props.attributes.theme ? themes.selected : theme;
     const themeObject = 'undefined' !== typeof defaultSelected && 'undefined' !== typeof loadedThemes[defaultSelected] ? loadedThemes[defaultSelected] : {};
-    const themeStyles = 'undefined' !== typeof themeObject['styles'] ? themeObject['styles'] : {};
-    let displayValues = {};
+    const themeStyles = 'undefined' !== typeof themeObject.styles ? themeObject.styles : {};
+    const displayValues = {};
     for (const styleElement in themeStyles) {
       if (!themeStyles.hasOwnProperty(styleElement)) {
         continue;
@@ -1097,14 +1100,14 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }
     }
     const titleControls = () => {
-      if ('undefined' === typeof themeStyles['title']) {
+      if ('undefined' === typeof themeStyles.title) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['title']['size']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.title.size) {
         elements.push(FontSizeInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title Font Size', "google-analytics-for-wordpress"), 'title_size'));
       }
-      if ('undefined' !== typeof themeStyles['title']['color']) {
+      if ('undefined' !== typeof themeStyles.title.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Title Color', "google-analytics-for-wordpress"), 'title_color'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
@@ -1113,33 +1116,33 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }, "monsterinsights-popular-posts-inline-title");
     };
     const labelControls = () => {
-      if ('undefined' === typeof themeStyles['label']) {
+      if ('undefined' === typeof themeStyles.label) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['label']['text']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.label.text) {
         elements.push(TextInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Label Text', "google-analytics-for-wordpress"), 'label_text'));
       }
-      if ('undefined' !== typeof themeStyles['label']['color']) {
+      if ('undefined' !== typeof themeStyles.label.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Label Color', "google-analytics-for-wordpress"), 'label_color'));
       }
-      if ('undefined' !== typeof themeStyles['label']['background']) {
+      if ('undefined' !== typeof themeStyles.label.background) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Label Background', "google-analytics-for-wordpress"), 'label_background'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Label Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-inline-label");
     };
     const borderControls = () => {
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border Color', "google-analytics-for-wordpress"), 'border_color'));
       }
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color2']) {
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color2) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Bottom Border Color', "google-analytics-for-wordpress"), 'border_color2'));
       }
-      if ('undefined' !== typeof themeStyles['background'] && 'undefined' !== typeof themeStyles['background']['border']) {
+      if ('undefined' !== typeof themeStyles.background && 'undefined' !== typeof themeStyles.background.border) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border Color', "google-analytics-for-wordpress"), 'background_border'));
       }
       if (0 === elements.length) {
@@ -1147,36 +1150,36 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Border Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-inline-border");
     };
     const backgroundControls = () => {
-      if ('undefined' === typeof themeStyles['background'] || 'undefined' === typeof themeStyles['background']['color']) {
+      if ('undefined' === typeof themeStyles.background || 'undefined' === typeof themeStyles.background.color) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['background']['color']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.background.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Color', "google-analytics-for-wordpress"), 'background_color'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Background Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-inline-background");
     };
     const iconControls = () => {
-      if ('undefined' === typeof themeStyles['icon']) {
+      if ('undefined' === typeof themeStyles.icon) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['icon']['color']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.icon.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon Color', "google-analytics-for-wordpress"), 'icon_color'));
       }
-      if ('undefined' !== typeof themeStyles['icon']['background']) {
+      if ('undefined' !== typeof themeStyles.icon.background) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon Background Color', "google-analytics-for-wordpress"), 'icon_background'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Icon Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-inline-icon");
     };
     const FontSizeInput = (label, attribute) => {
@@ -1184,6 +1187,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.RangeControl, {
         label: label,
         value: parseInt(value),
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
         min: 1,
         max: 100,
         onChange: newValue => setAttributes({
@@ -1197,6 +1202,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
         label: label,
         type: "text",
         value: value,
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
         onChange: newValue => setAttributes({
           [attribute]: newValue
         })
@@ -1217,8 +1224,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }, 'monsterinsights-popular-posts-input' + attribute)];
     };
     const ThemeImage = () => {
-      if ('undefined' !== typeof themeObject['image'] && themeObject['image']) {
-        const imageName = 'undefined' !== typeof themeStyles['image'] ? themeStyles['image'] : 'theme-preview-image.jpg';
+      if ('undefined' !== typeof themeObject.image && themeObject.image) {
+        const imageName = 'undefined' !== typeof themeStyles.image ? themeStyles.image : 'theme-preview-image.jpg';
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "monsterinsights-inline-popular-posts-image",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
@@ -1228,40 +1235,40 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }
     };
     const ThemeLabel = () => {
-      if ('undefined' !== typeof themeStyles['label']) {
+      if ('undefined' !== typeof themeStyles.label) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           style: {
-            color: displayValues['label_color'],
-            backgroundColor: displayValues['label_background']
+            color: displayValues.label_color,
+            backgroundColor: displayValues.label_background
           },
           className: "monsterinsights-inline-popular-posts-label",
-          children: displayValues['label_text']
+          children: displayValues.label_text
         });
       }
     };
     const ThemeTitle = () => {
-      if ('undefined' !== typeof themeStyles['title'] && 'undefined' === typeof themeObject['list'] && 'undefined' !== typeof themeStyles['title']['text']) {
+      if ('undefined' !== typeof themeStyles.title && 'undefined' === typeof themeObject.list && 'undefined' !== typeof themeStyles.title.text) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("a", {
           href: "#",
           className: "monsterinsights-inline-popular-posts-title",
           style: {
-            color: displayValues['title_color'],
-            fontSize: displayValues['title_size'] + 'px'
+            color: displayValues.title_color,
+            fontSize: displayValues.title_size + 'px'
           },
-          children: themeStyles['title']['text']
+          children: themeStyles.title.text
         });
       }
     };
     const ThemeList = () => {
-      if ('undefined' !== typeof themeObject['list']) {
+      if ('undefined' !== typeof themeObject.list) {
         const items = [];
-        for (const index in themeObject['list']) {
+        for (const index in themeObject.list) {
           items.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("li", {
             style: {
-              color: displayValues['title_color'],
-              fontSize: displayValues['title_size'] + 'px'
+              color: displayValues.title_color,
+              fontSize: displayValues.title_size + 'px'
             },
-            children: themeObject['list'][index]
+            children: themeObject.list[index]
           }, 'monsterinsights-popular-posts-preview-list-item-' + index));
         }
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("ul", {
@@ -1271,66 +1278,70 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_5__.registerStore)('mo
       }
     };
     const ThemeIcon = () => {
-      if ('undefined' !== typeof themeStyles['icon']) {
+      if ('undefined' !== typeof themeStyles.icon) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           className: "monsterinsights-inline-popular-posts-icon",
           style: {
-            backgroundColor: displayValues['icon_background']
+            backgroundColor: displayValues.icon_background
           },
-          children: _components_GUTENBERG_APP_THEME_InlineIcons__WEBPACK_IMPORTED_MODULE_0__["default"].themeIcon(displayValues['icon_color'])
+          children: _components_GUTENBERG_APP_THEME_InlineIcons__WEBPACK_IMPORTED_MODULE_0__["default"].themeIcon(displayValues.icon_color)
         });
       }
     };
     const ThemeBorder = () => {
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color']) {
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           className: "monsterinsights-inline-popular-posts-border",
           style: {
-            borderColor: displayValues['border_color']
+            borderColor: displayValues.border_color
           }
         });
       }
     };
     const ThemeBorder2 = () => {
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color2']) {
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color2) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
           className: "monsterinsights-inline-popular-posts-border-2",
           style: {
-            borderColor: displayValues['border_color2']
+            borderColor: displayValues.border_color2
           }
         });
       }
     };
-    return [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Theme', "google-analytics-for-wordpress"),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_PopularPostsThemePicker__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            id: "monsterinsights-popular-posts-inline-theme",
-            options: loadedThemes,
-            selected: defaultSelected,
-            icons: _components_GUTENBERG_APP_THEME_InlineIcons__WEBPACK_IMPORTED_MODULE_0__["default"],
-            onChange: option => {
-              setAttributes({
-                theme: option
-              });
-            }
-          })
-        }, "monsterinsights-popular-posts-inline-theme-row")
-      }, "monsterinsights-popular-posts-inline-theme"), titleControls(), labelControls(), borderControls(), backgroundControls(), iconControls()]
-    }, "monsterinsights-popular-posts-inline-inspector-controls"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-        className: 'monsterinsights-inline-popular-posts-widget monsterinsights-inline-popular-posts-' + defaultSelected,
-        style: {
-          backgroundColor: displayValues['background_color'],
-          borderColor: displayValues['background_border']
-        },
-        children: [ThemeImage(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
-          className: "monsterinsights-inline-popular-posts-text",
-          children: [ThemeIcon(), ThemeLabel(), ThemeBorder(), ThemeTitle(), ThemeList(), ThemeBorder2()]
-        })]
-      })
-    }, "monsterinsights-popular-posts-inline-preview")];
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.useBlockProps)();
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.InspectorControls, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Theme', "google-analytics-for-wordpress"),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.PanelRow, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_components_PopularPostsThemePicker__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              id: "monsterinsights-popular-posts-inline-theme",
+              options: loadedThemes,
+              selected: defaultSelected,
+              icons: _components_GUTENBERG_APP_THEME_InlineIcons__WEBPACK_IMPORTED_MODULE_0__["default"],
+              onChange: option => {
+                setAttributes({
+                  theme: option
+                });
+              }
+            })
+          }, "monsterinsights-popular-posts-inline-theme-row")
+        }, "monsterinsights-popular-posts-inline-theme"), titleControls(), labelControls(), borderControls(), backgroundControls(), iconControls()]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+        ...blockProps,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+          className: 'monsterinsights-inline-popular-posts-widget monsterinsights-inline-popular-posts-' + defaultSelected,
+          style: {
+            backgroundColor: displayValues.background_color,
+            borderColor: displayValues.background_border
+          },
+          children: [ThemeImage(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+            className: "monsterinsights-inline-popular-posts-text",
+            children: [ThemeIcon(), ThemeLabel(), ThemeBorder(), ThemeTitle(), ThemeList(), ThemeBorder2()]
+          })]
+        })
+      })]
+    });
   }),
   save: props => {
     return null;
@@ -1353,7 +1364,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 
-let icons = {};
+const icons = {};
 icons.widgetpop = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("svg", {
   width: "16",
   height: "20",
@@ -1780,7 +1791,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       if ('undefined' !== typeof themes.themes) {
         for (const slug in themes.themes) {
           if (themes.themes.hasOwnProperty(slug)) {
-            themes.themes[slug]['value'] = slug;
+            themes.themes[slug].value = slug;
           }
         }
         return actions.setThemes(themes);
@@ -1793,6 +1804,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
  * Register block
  */
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)(blockId, {
+  apiVersion: 3,
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Popular Posts', "google-analytics-for-wordpress"),
   description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add popular posts from MonsterInsights', "google-analytics-for-wordpress"),
   category: 'widgets',
@@ -1929,10 +1941,10 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       color: '#000000'
     }];
     const loadedThemes = 'undefined' !== typeof themes.themes ? themes.themes : {};
-    const defaultSelected = 'undefined' === typeof props.attributes['theme'] ? themes.selected : theme;
+    const defaultSelected = 'undefined' === typeof props.attributes.theme ? themes.selected : theme;
     const themeObject = 'undefined' !== typeof defaultSelected && 'undefined' !== typeof loadedThemes[defaultSelected] ? loadedThemes[defaultSelected] : {};
-    const themeStyles = 'undefined' !== typeof themeObject['styles'] ? themeObject['styles'] : {};
-    let displayValues = {};
+    const themeStyles = 'undefined' !== typeof themeObject.styles ? themeObject.styles : {};
+    const displayValues = {};
     for (const styleElement in themeStyles) {
       if (!themeStyles.hasOwnProperty(styleElement)) {
         continue;
@@ -1956,14 +1968,14 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }
     }
     const titleControls = () => {
-      if ('undefined' === typeof themeStyles['title']) {
+      if ('undefined' === typeof themeStyles.title) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['title']['size']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.title.size) {
         elements.push(FontSizeInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title Font Size', "google-analytics-for-wordpress"), 'title_size'));
       }
-      if ('undefined' !== typeof themeStyles['title']['color']) {
+      if ('undefined' !== typeof themeStyles.title.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Title Color', "google-analytics-for-wordpress"), 'title_color'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
@@ -1972,14 +1984,14 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }, "monsterinsights-popular-posts-widget-title");
     };
     const metaStyleControls = () => {
-      if ('undefined' === typeof themeStyles['meta']) {
+      if ('undefined' === typeof themeStyles.meta) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['meta']['size']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.meta.size) {
         elements.push(FontSizeInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Meta Font Size', "google-analytics-for-wordpress"), 'meta_size'));
       }
-      if ('undefined' !== typeof themeStyles['meta']['color']) {
+      if ('undefined' !== typeof themeStyles.meta.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Meta Color', "google-analytics-for-wordpress"), 'meta_color'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
@@ -1988,7 +2000,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }, "monsterinsights-popular-posts-widget-meta-styles");
     };
     const commentsStyleControls = () => {
-      if ('undefined' === typeof themeStyles['comments']) {
+      if ('undefined' === typeof themeStyles.comments) {
         return;
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
@@ -1997,22 +2009,22 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }, "monsterinsights-popular-posts-widget-comment-styles");
     };
     const labelControls = () => {
-      if ('undefined' === typeof themeStyles['label']) {
+      if ('undefined' === typeof themeStyles.label) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['label']['text']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.label.text) {
         elements.push(TextInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Label Text', "google-analytics-for-wordpress"), 'label_text'));
       }
-      if ('undefined' !== typeof themeStyles['label']['color']) {
+      if ('undefined' !== typeof themeStyles.label.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Label Color', "google-analytics-for-wordpress"), 'label_color'));
       }
-      if ('undefined' !== typeof themeStyles['label']['background']) {
+      if ('undefined' !== typeof themeStyles.label.background) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Label Background', "google-analytics-for-wordpress"), 'label_background'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Label Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-widget-label");
     };
     const columnsControls = () => {
@@ -2035,23 +2047,25 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
           selected: columns,
           onChange: newValue => {
             setAttributes({
-              ['columns']: '' === newValue ? '' : parseInt(newValue)
+              columns: '' === newValue ? '' : parseInt(newValue)
             });
             const updatedOptions = postCountOptions(parseInt(newValue));
             if (-1 === updatedOptions.indexOf(post_count)) {
               setAttributes({
-                ['post_count']: parseInt(updatedOptions[0])
+                post_count: parseInt(updatedOptions[0])
               });
             }
           }
         }, "monsterinsights-popular-posts-widget-columns-control"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Post Count', "google-analytics-for-wordpress"),
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
           help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Number of posts displayed.', "google-analytics-for-wordpress"),
           options: postCountOptions(columns, true),
           value: post_count,
           onChange: newValue => {
             setAttributes({
-              ['post_count']: parseInt(newValue)
+              post_count: parseInt(newValue)
             });
           }
         }, "monsterinsights-popular-posts-widget-post-count")]
@@ -2076,7 +2090,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       return options;
     };
     const metaControls = () => {
-      if ('undefined' !== typeof themeStyles['meta']) {
+      if ('undefined' !== typeof themeStyles.meta) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
           title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Display Options', "google-analytics-for-wordpress"),
           children: [meta_authorControl(), meta_dateControl(), meta_commentsControl()]
@@ -2088,25 +2102,28 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Behavior Settings', "google-analytics-for-wordpress"),
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Display Widget Title', "google-analytics-for-wordpress"),
+          __nextHasNoMarginBottom: true,
           checked: widget_title,
           onChange: newValue => {
             setAttributes({
-              ['widget_title']: newValue
+              widget_title: newValue
             });
           }
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Widget Title', "google-analytics-for-wordpress"),
           type: "text",
           value: widget_title_text,
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
           onChange: newValue => setAttributes({
-            ['widget_title_text']: newValue
+            widget_title_text: newValue
           })
         }, 'monsterinsights-popular-posts-input-widget-title-text'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_HierarchicalTerms_GUTENBERG_APP_VERSION__WEBPACK_IMPORTED_MODULE_8__["default"], {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Only Show Posts From These Categories', "google-analytics-for-wordpress"),
           slug: "category",
           onUpdateTerms: newValue => {
             setAttributes({
-              ['categories']: newValue
+              categories: newValue
             });
           },
           terms: categories
@@ -2114,8 +2131,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }, "monsterinsights-popular-posts-widget-behavior-options");
     };
     const inArray = (needle, haystack) => {
-      var length = haystack.length;
-      for (var i = 0; i < length; i++) {
+      const length = haystack.length;
+      for (let i = 0; i < length; i++) {
         if (haystack[i] == needle) {
           return true;
         }
@@ -2123,39 +2140,42 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       return false;
     };
     const meta_authorControl = () => {
-      if ('undefined' !== typeof themeStyles['meta']['author']) {
+      if ('undefined' !== typeof themeStyles.meta.author) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Display Author', "google-analytics-for-wordpress"),
-          checked: displayValues['meta_author'],
+          __nextHasNoMarginBottom: true,
+          checked: displayValues.meta_author,
           onChange: newValue => {
             setAttributes({
-              ['meta_author']: newValue
+              meta_author: newValue
             });
           }
         });
       }
     };
     const meta_dateControl = () => {
-      if ('undefined' !== typeof themeStyles['meta']['date']) {
+      if ('undefined' !== typeof themeStyles.meta.date) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Display Date', "google-analytics-for-wordpress"),
-          checked: displayValues['meta_date'],
+          __nextHasNoMarginBottom: true,
+          checked: displayValues.meta_date,
           onChange: newValue => {
             setAttributes({
-              ['meta_date']: newValue
+              meta_date: newValue
             });
           }
         });
       }
     };
     const meta_commentsControl = () => {
-      if ('undefined' !== typeof themeStyles['meta']['comments']) {
+      if ('undefined' !== typeof themeStyles.meta.comments) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
           label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Display Comments', "google-analytics-for-wordpress"),
-          checked: displayValues['meta_comments'],
+          __nextHasNoMarginBottom: true,
+          checked: displayValues.meta_comments,
           onChange: newValue => {
             setAttributes({
-              ['meta_comments']: newValue
+              meta_comments: newValue
             });
           }
         });
@@ -2180,14 +2200,14 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       });
     };
     const borderControls = () => {
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Border Color', "google-analytics-for-wordpress"), 'borderColor'));
       }
-      if ('undefined' !== typeof themeStyles['border'] && 'undefined' !== typeof themeStyles['border']['color2']) {
+      if ('undefined' !== typeof themeStyles.border && 'undefined' !== typeof themeStyles.border.color2) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Bottom Border Color', "google-analytics-for-wordpress"), 'borderColor2'));
       }
-      if ('undefined' !== typeof themeStyles['background'] && 'undefined' !== typeof themeStyles['background']['border']) {
+      if ('undefined' !== typeof themeStyles.background && 'undefined' !== typeof themeStyles.background.border) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Border Color', "google-analytics-for-wordpress"), 'background_border'));
       }
       if (0 === elements.length) {
@@ -2195,20 +2215,20 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Border Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-inline-border");
     };
     const backgroundControls = () => {
-      if ('undefined' === typeof themeStyles['background'] || 'undefined' === typeof themeStyles['background']['color']) {
+      if ('undefined' === typeof themeStyles.background || 'undefined' === typeof themeStyles.background.color) {
         return;
       }
-      let elements = [];
-      if ('undefined' !== typeof themeStyles['background']['color']) {
+      const elements = [];
+      if ('undefined' !== typeof themeStyles.background.color) {
         elements.push(ColorInput((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Background Color', "google-analytics-for-wordpress"), 'background_color'));
       }
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Background Settings', "google-analytics-for-wordpress"),
-        children: [" ", elements, " "]
+        children: [' ', elements, ' ']
       }, "monsterinsights-popular-posts-widget-background");
     };
     const FontSizeInput = (label, attribute) => {
@@ -2216,6 +2236,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RangeControl, {
         label: label,
         value: parseInt(value),
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
         min: 1,
         max: 100,
         onChange: newValue => setAttributes({
@@ -2229,6 +2251,8 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
         label: label,
         type: "text",
         value: value,
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
         onChange: newValue => setAttributes({
           [attribute]: newValue
         })
@@ -2260,24 +2284,24 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }
     };
     const ThemeLabel = () => {
-      if ('undefined' !== typeof themeStyles['label']) {
+      if ('undefined' !== typeof themeStyles.label) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
           style: {
-            color: displayValues['label_color'],
-            backgroundColor: displayValues['label_background']
+            color: displayValues.label_color,
+            backgroundColor: displayValues.label_background
           },
           className: "monsterinsights-widget-popular-posts-label",
-          children: displayValues['label_text']
+          children: displayValues.label_text
         });
       }
     };
     const ThemeMeta = () => {
-      if ('undefined' !== typeof themeStyles['meta']) {
+      if ('undefined' !== typeof themeStyles.meta) {
         return [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
           className: "monsterinsights-widget-popular-posts-meta",
           style: {
-            color: displayValues['meta_color'],
-            fontSize: displayValues['meta_size'] + 'px'
+            color: displayValues.meta_color,
+            fontSize: displayValues.meta_size + 'px'
           },
           children: [Thememeta_author(), ThemeMetaSeparator(), Thememeta_date()]
         }, "monsterinsights-widget-popular-posts-meta-options"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
@@ -2286,7 +2310,7 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }
     };
     const Thememeta_author = () => {
-      if (displayValues['meta_author']) {
+      if (displayValues.meta_author) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
           className: "monsterinsights-widget-popular-posts-author",
           children: "by Aazim Akhtar"
@@ -2294,29 +2318,29 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       }
     };
     const ThemeMetaSeparator = () => {
-      if (displayValues['meta_author'] && displayValues['meta_date']) {
+      if (displayValues.meta_author && displayValues.meta_date) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
           dangerouslySetInnerHTML: {
-            __html: themeStyles['meta']['separator']
+            __html: themeStyles.meta.separator
           }
         });
       }
     };
     const Thememeta_comments = () => {
-      if ('undefined' !== typeof themeStyles['meta'] && 'undefined' !== typeof themeStyles['meta']['comments'] && displayValues['meta_comments']) {
-        let comments_color = 'undefined' !== typeof themeStyles['comments'] ? displayValues['comments_color'] : displayValues['meta_color'];
+      if ('undefined' !== typeof themeStyles.meta && 'undefined' !== typeof themeStyles.meta.comments && displayValues.meta_comments) {
+        const comments_color = 'undefined' !== typeof themeStyles.comments ? displayValues.comments_color : displayValues.meta_color;
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("span", {
           className: "monsterinsights-widget-popular-posts-comments",
           style: {
             color: comments_color,
-            fontSize: displayValues['meta_size'] + 'px'
+            fontSize: displayValues.meta_size + 'px'
           },
           children: [_components_GUTENBERG_APP_THEME_WidgetIcons__WEBPACK_IMPORTED_MODULE_6__["default"].comments(comments_color), " 24"]
         });
       }
     };
     const Thememeta_date = () => {
-      if (displayValues['meta_date']) {
+      if (displayValues.meta_date) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("span", {
           className: "monsterinsights-widget-popular-posts-date",
           children: "Yesterday"
@@ -2330,10 +2354,10 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
       return listItems;
     };
     const ThemeList = () => {
-      if ('undefined' !== typeof themeObject['list'] && 'undefined' !== typeof themeObject['list']['items']) {
+      if ('undefined' !== typeof themeObject.list && 'undefined' !== typeof themeObject.list.items) {
         // Make sure we have at least 10 items.
-        let listItems = fillListItems(themeObject['list']['items']);
-        let imageItems = 'undefined' !== typeof themeObject['list']['images'] ? fillListItems(themeObject['list']['images']) : [];
+        const listItems = fillListItems(themeObject.list.items);
+        const imageItems = 'undefined' !== typeof themeObject.list.images ? fillListItems(themeObject.list.images) : [];
         const items = [];
         for (const index in listItems) {
           if (parseInt(index) === parseInt(post_count)) {
@@ -2341,16 +2365,16 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
           }
           items.push(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("li", {
             style: {
-              backgroundColor: displayValues['background_color'],
-              borderColor: displayValues['background_border']
+              backgroundColor: displayValues.background_color,
+              borderColor: displayValues.background_border
             },
             children: [ThemeImage(imageItems, index), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
               className: "monsterinsights-widget-popular-posts-text",
               children: [ThemeLabel(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("a", {
                 className: "monsterinsights-widget-popular-posts-title",
                 style: {
-                  color: displayValues['title_color'],
-                  fontSize: displayValues['title_size'] + 'px'
+                  color: displayValues.title_color,
+                  fontSize: displayValues.title_size + 'px'
                 },
                 children: listItems[index]
               }), ThemeMeta()]
@@ -2371,32 +2395,36 @@ const store = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.registerStore)('mo
         });
       }
     };
-    return [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Theme', "google-analytics-for-wordpress"),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PopularPostsThemePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            id: "monsterinsights-popular-posts-widget-theme",
-            options: loadedThemes,
-            selected: defaultSelected,
-            icons: _components_GUTENBERG_APP_THEME_WidgetIcons__WEBPACK_IMPORTED_MODULE_6__["default"],
-            onChange: option => {
-              setAttributes({
-                theme: option
-              });
-            }
-          })
-        }, "monsterinsights-popular-posts-widget-theme-row")
-      }, "monsterinsights-popular-posts-widget-theme"), titleControls(), backgroundControls(), labelControls(), borderControls(), metaStyleControls(), commentsStyleControls(), columnsControls(), metaControls(), behaviorControls()]
-    }, "monsterinsights-popular-posts-widget-inspector-controls"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
-        className: 'monsterinsights-widget-popular-posts-widget monsterinsights-widget-popular-posts-' + defaultSelected + ' monsterinsights-widget-popular-posts-columns-' + columns,
-        children: [WidgetTitle(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
-          className: "monsterinsights-widget-popular-posts-text",
-          children: ThemeList()
-        })]
-      })
-    }, "monsterinsights-popular-posts-widget-preview")];
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps)();
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Theme', "google-analytics-for-wordpress"),
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_PopularPostsThemePicker__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              id: "monsterinsights-popular-posts-widget-theme",
+              options: loadedThemes,
+              selected: defaultSelected,
+              icons: _components_GUTENBERG_APP_THEME_WidgetIcons__WEBPACK_IMPORTED_MODULE_6__["default"],
+              onChange: option => {
+                setAttributes({
+                  theme: option
+                });
+              }
+            })
+          }, "monsterinsights-popular-posts-widget-theme-row")
+        }, "monsterinsights-popular-posts-widget-theme"), titleControls(), backgroundControls(), labelControls(), borderControls(), metaStyleControls(), commentsStyleControls(), columnsControls(), metaControls(), behaviorControls()]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        ...blockProps,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+          className: 'monsterinsights-widget-popular-posts-widget monsterinsights-widget-popular-posts-' + defaultSelected + ' monsterinsights-widget-popular-posts-columns-' + columns,
+          children: [WidgetTitle(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            className: "monsterinsights-widget-popular-posts-text",
+            children: ThemeList()
+          })]
+        })
+      })]
+    });
   }),
   save: props => {
     return null;
@@ -2442,7 +2470,7 @@ __webpack_require__.r(__webpack_exports__);
 // Add custom attributes to the button block
 
 (0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_0__.addFilter)('blocks.registerBlockType', 'monsterinsights-extend-blocks/monsterinsights-add-attributes', (settings, name) => {
-  let supportedBlocks = ['core/button', 'core/image'];
+  const supportedBlocks = ['core/button', 'core/image'];
   if (!supportedBlocks.includes(name)) {
     return settings;
   }
@@ -2469,7 +2497,7 @@ __webpack_require__.r(__webpack_exports__);
 // Add custom control to the block's sidebar
 const MonsterinsightsAddConversionEventControl = (0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.createHigherOrderComponent)(BlockEdit => {
   return props => {
-    let supportedBlocks = ['core/button', 'core/image'];
+    const supportedBlocks = ['core/button', 'core/image'];
     if (!supportedBlocks.includes(props.name)) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(BlockEdit, {
         ...props
@@ -2489,7 +2517,8 @@ const MonsterinsightsAddConversionEventControl = (0,_wordpress_compose__WEBPACK_
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
               label: "Mark as a conversion event",
               checked: false,
-              disabled: true
+              disabled: true,
+              __nextHasNoMarginBottom: true
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_metabox_components_pro_badge__WEBPACK_IMPORTED_MODULE_7__["default"], {
               license: license_type,
               upgrade_url: conversion_tracking_upgrade_url
@@ -2561,7 +2590,8 @@ const MonsterinsightsAddConversionEventControl = (0,_wordpress_compose__WEBPACK_
             checked: markAsConversionEvent,
             onChange: newValue => setAttributes({
               monsterinsightsMarkAsConversionEvent: newValue
-            })
+            }),
+            __nextHasNoMarginBottom: true
           }), markAsConversionEvent && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.Fragment, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
               label: "Custom Event Name",
@@ -2569,12 +2599,15 @@ const MonsterinsightsAddConversionEventControl = (0,_wordpress_compose__WEBPACK_
               onChange: newValue => setAttributes({
                 monsterinsightsCustomEventName: newValue
               }),
-              placeholder: "click-(elementID)"
+              placeholder: "click-(elementID)",
+              __nextHasNoMarginBottom: true,
+              __next40pxDefaultSize: true
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
               label: "Mark as Key Event",
               checked: attributes.monsterinsightsMarkAsKeyEvent,
               onChange: onMarkAsKeyEventChange,
-              help: "Mark this click as a key event which can be tracked in all of your reports."
+              help: "Mark this click as a key event which can be tracked in all of your reports.",
+              __nextHasNoMarginBottom: true
             })]
           })]
         })
@@ -2646,14 +2679,14 @@ class PageInsights extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Compo
       }
     };
     this.texts = {
-      last30days: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Last 30 days", "google-analytics-for-wordpress"),
-      yesterday: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Yesterday", "google-analytics-for-wordpress"),
-      bouncerate: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Bounce Rate", "google-analytics-for-wordpress"),
-      timeonpage: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Time On Page", "google-analytics-for-wordpress"),
-      loadingtime: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Load Time", "google-analytics-for-wordpress"),
-      entrances: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Entrances", "google-analytics-for-wordpress"),
-      pageviews: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Page Views", "google-analytics-for-wordpress"),
-      exits: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Exits", "google-analytics-for-wordpress")
+      last30days: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Last 30 days', "google-analytics-for-wordpress"),
+      yesterday: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Yesterday', "google-analytics-for-wordpress"),
+      bouncerate: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Bounce Rate', "google-analytics-for-wordpress"),
+      timeonpage: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Time On Page', "google-analytics-for-wordpress"),
+      loadingtime: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Load Time', "google-analytics-for-wordpress"),
+      entrances: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Entrances', "google-analytics-for-wordpress"),
+      pageviews: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Page Views', "google-analytics-for-wordpress"),
+      exits: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Exits', "google-analytics-for-wordpress")
     };
   }
   showPageInsightsClick = () => {
@@ -2667,7 +2700,7 @@ class PageInsights extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Compo
     });
   };
   tabclick = current_tab => {
-    let tabs = this.state.tabs;
+    const tabs = this.state.tabs;
     for (const [key, value] of Object.entries(tabs)) {
       tabs[key] = key === current_tab;
     }
@@ -2759,7 +2792,7 @@ class PageInsightsHideBtn extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1_
   constructor() {
     super();
     this.state = {};
-    this.btn_text = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Hide Page Insights", "google-analytics-for-wordpress");
+    this.btn_text = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Hide Page Insights', "google-analytics-for-wordpress");
   }
   render() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
@@ -2799,7 +2832,7 @@ class PageInsightsShowBtn extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1_
   constructor() {
     super();
     this.state = {};
-    this.btn_show_text = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Show Page Insights", "google-analytics-for-wordpress");
+    this.btn_show_text = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Show Page Insights', "google-analytics-for-wordpress");
   }
   render() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
@@ -2923,9 +2956,9 @@ const ProBadge = props => {
   if ('lite' !== props.license) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
   }
-  let texts = {
-    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("This is a PRO feature.", "google-analytics-for-wordpress"),
-    upgrade: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Upgrade", "google-analytics-for-wordpress")
+  const texts = {
+    description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('This is a PRO feature.', "google-analytics-for-wordpress"),
+    upgrade: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Upgrade', "google-analytics-for-wordpress")
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -2947,7 +2980,7 @@ const ProBadge = props => {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
           href: props.upgrade_url,
           target: "_blank",
-          rel: "noopener",
+          rel: "noopener noreferrer",
           children: texts.upgrade
         })
       })]
@@ -3011,11 +3044,11 @@ const SiteNotes = () => {
   // Memoized constants
   const texts = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useMemo)(() => ({
     checkbox: {
-      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add a Site Note when publishing this post", "google-analytics-for-wordpress"),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add a Site Note", "google-analytics-for-wordpress")
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add a Site Note when publishing this post', "google-analytics-for-wordpress"),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Add a Site Note', "google-analytics-for-wordpress")
     },
     category: {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Category", "google-analytics-for-wordpress")
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Category', "google-analytics-for-wordpress")
     },
     published_template: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Published: %s', "google-analytics-for-wordpress")
   }), []);
@@ -3026,9 +3059,9 @@ const SiteNotes = () => {
   // Initialize state from metas when they become available
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (metas && Object.keys(metas).length > 0) {
-      setAddSiteNote(!!metas['_monsterinsights_sitenote_active']);
-      setSiteNoteText(metas['_monsterinsights_sitenote_note'] || '');
-      setCategory(metas['_monsterinsights_sitenote_category'] || 0);
+      setAddSiteNote(!!metas._monsterinsights_sitenote_active);
+      setSiteNoteText(metas._monsterinsights_sitenote_note || '');
+      setCategory(metas._monsterinsights_sitenote_category || 0);
     }
   }, [metas]);
 
@@ -3082,14 +3115,15 @@ const SiteNotes = () => {
       checked: addSiteNote,
       help: texts.checkbox.help,
       label: texts.checkbox.label,
-      onChange: onToggleControlChange
+      onChange: onToggleControlChange,
+      __nextHasNoMarginBottom: true
     }), addSiteNote && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
       help: "",
       label: "",
       value: siteNoteText,
       onChange: text => {
-        let templateRegex = new RegExp('^' + texts.published_template.replace('%s', '.*').replaceAll('"', '\\"') + '$', 'g');
-        let siteNoteNotChanged = templateRegex.test(text);
+        const templateRegex = new RegExp('^' + texts.published_template.replace('%s', '.*').replaceAll('"', '\\"') + '$', 'g');
+        const siteNoteNotChanged = templateRegex.test(text);
         setSiteNoteText(text);
         setCustomSiteNote(!siteNoteNotChanged);
         saveNoteField(text);
@@ -3103,7 +3137,8 @@ const SiteNotes = () => {
         setCategory(category_id);
         saveCategoryField(category_id);
       },
-      __nextHasNoMarginBottom: true
+      __nextHasNoMarginBottom: true,
+      __next40pxDefaultSize: true
     })]
   });
 };
@@ -3158,7 +3193,7 @@ const MonsterInsightsMetabox = () => {
   const metas = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useSelect)(select => {
     return select('core/editor')?.getEditedPostAttribute('meta') || {};
   }, []);
-  const [hasSkipTracking, setHasSkipTracking] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(!!metas['_monsterinsights_skip_tracking']);
+  const [hasSkipTracking, setHasSkipTracking] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_5__.useState)(!!metas._monsterinsights_skip_tracking);
 
   // Use useDispatch hook
   const {
@@ -3166,7 +3201,7 @@ const MonsterInsightsMetabox = () => {
   } = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_2__.useDispatch)('core/editor');
 
   // For non-public post types, show only SiteNotes
-  if ("1" !== MonsterInsightsVars['public_post_type']) {
+  if ('1' !== MonsterInsightsVars.public_post_type) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_editor__WEBPACK_IMPORTED_MODULE_4__.PluginDocumentSettingPanel, {
       name: "monsterinsights-metabox",
       title: "MonsterInsights",
@@ -3184,19 +3219,20 @@ const MonsterInsightsMetabox = () => {
     icon: "mi",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.ToggleControl, {
       checked: hasSkipTracking,
-      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)("Toggle to prevent Google Analytics from tracking this page.", "google-analytics-for-wordpress"),
+      help: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Toggle to prevent Google Analytics from tracking this page.', "google-analytics-for-wordpress"),
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Exclude page from Google Analytics Tracking', "google-analytics-for-wordpress"),
       disabled: 'lite' === MonsterInsightsVars.license_type,
+      __nextHasNoMarginBottom: true,
       onChange: value => {
         setHasSkipTracking(!!value);
         editPost({
           meta: {
-            '_monsterinsights_skip_tracking': value
+            _monsterinsights_skip_tracking: value
           }
         });
       }
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_page_insights_GUTENBERG_APP_VERSION__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      addonInstalled: MonsterInsightsVars['page_insights_addon_active'],
+      addonInstalled: MonsterInsightsVars.page_insights_addon_active,
       hidden: hasSkipTracking
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_pro_badge__WEBPACK_IMPORTED_MODULE_6__["default"], {
       license: MonsterInsightsVars.license_type,
@@ -3204,7 +3240,7 @@ const MonsterInsightsMetabox = () => {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_site_notes__WEBPACK_IMPORTED_MODULE_8__["default"], {})]
   });
 };
-(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)("monsterinsights-metabox", {
+(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_1__.registerPlugin)('monsterinsights-metabox', {
   render: MonsterInsightsMetabox
 });
 
@@ -3241,7 +3277,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelCharacterCount = props => {
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Character Count", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Character Count', "google-analytics-for-wordpress");
   const characterLength = props.data.result.length;
   const barScore = characterLength >= 66 ? 100 : Math.round(characterLength * 1.51);
   let classOnLength = '';
@@ -3265,25 +3301,25 @@ const HeadlinePanelCharacterCount = props => {
     barColor = '#EB5757';
   }
   if (characterLength <= 34) {
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Too Short", "google-analytics-for-wordpress");
-    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("You have space to add more keywords and power words to boost your rankings and click-through rate.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Too Short', "google-analytics-for-wordpress");
+    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('You have space to add more keywords and power words to boost your rankings and click-through rate.', "google-analytics-for-wordpress");
   } else if (characterLength >= 35 && characterLength <= 66) {
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Good", "google-analytics-for-wordpress");
-    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headlines that are about 55 characters long will display fully in search results and tend to get more clicks.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Good', "google-analytics-for-wordpress");
+    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headlines that are about 55 characters long will display fully in search results and tend to get more clicks.', "google-analytics-for-wordpress");
   } else if (characterLength >= 67) {
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Too Long", "google-analytics-for-wordpress");
-    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("At this length, it will get cut off in search results. Try reducing it to about 55 characters.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Too Long', "google-analytics-for-wordpress");
+    descOnCharLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('At this length, it will get cut off in search results. Try reducing it to about 55 characters.', "google-analytics-for-wordpress");
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
       title: textPanelTitle,
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-panel-character-count", "monsterinsights-headline-analyzer-panel-has-icon", classOnLength),
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-panel-character-count', 'monsterinsights-headline-analyzer-panel-has-icon', classOnLength),
       icon: 'green' === classOnLength ? _icons__WEBPACK_IMPORTED_MODULE_3__["default"].check : _icons__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "monsterinsights-headline-analyzer-pie-chart-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-character-length", classOnLength),
+            className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-character-length', classOnLength),
             children: characterLength
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_HeadlinePieChart__WEBPACK_IMPORTED_MODULE_5__["default"], {
             barScore: barScore,
@@ -3333,9 +3369,9 @@ __webpack_require__.r(__webpack_exports__);
 
 const HeadlineNewScorePanel = props => {
   const postTitle = props.analyzer.currentHeadlineData.sentence;
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("New Score", "google-analytics-for-wordpress");
-  const textGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("A good score is between 40 and 60. For best results, you should strive for 70 and above.", "google-analytics-for-wordpress");
-  const textCurrentScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Current Score", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('New Score', "google-analytics-for-wordpress");
+  const textGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('A good score is between 40 and 60. For best results, you should strive for 70 and above.', "google-analytics-for-wordpress");
+  const textCurrentScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Current Score', "google-analytics-for-wordpress");
   const newTitle = 'undefined' !== typeof props.analyzer.newHeadlineData ? props.analyzer.newHeadlineData.sentence : '';
   const newScore = 'undefined' !== typeof props.analyzer.newHeadlineData ? props.analyzer.newHeadlineData.score : '';
   const currentScore = 'undefined' !== typeof props.analyzer.currentHeadlineData.score ? props.analyzer.currentHeadlineData.score : '';
@@ -3357,7 +3393,7 @@ const HeadlineNewScorePanel = props => {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "monsterinsights-headline-analyzer-pie-chart-container",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("monsterinsights-headline-analyzer-new-score", classOnNewScore),
+              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('monsterinsights-headline-analyzer-new-score', classOnNewScore),
               children: newScore
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_HeadlinePieChart__WEBPACK_IMPORTED_MODULE_4__["default"], {
               barScore: newScore,
@@ -3366,12 +3402,12 @@ const HeadlineNewScorePanel = props => {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "current-score",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("span", {
-              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("monsterinsights-headline-analyzer-score-difference", classOnNewScore),
+              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('monsterinsights-headline-analyzer-score-difference', classOnNewScore),
               children: [newScore > currentScore ? '+ ' : newScore === currentScore ? '' : '- ', scoreDifference]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h5", {
               children: textCurrentScore
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("monsterinsights-headline-analyzer-score", classOnCurrentScoreBg),
+              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('monsterinsights-headline-analyzer-score', classOnCurrentScoreBg),
               children: currentScore
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("p", {
               children: ["\u201C", postTitle, "\u201D"]
@@ -3413,7 +3449,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelPreviousScores = props => {
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Previous Scores", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Previous Scores', "google-analytics-for-wordpress");
   const previousScores = 'undefined' !== props.analyzer.previousHeadlinesData ? props.analyzer.previousHeadlinesData : [];
   const sidebar = document.querySelector('.edit-post-sidebar');
   const activeTab = 'undefined' !== props.analyzer.activeTab ? props.analyzer.activeTab : 'current-score';
@@ -3436,17 +3472,15 @@ const HeadlinePanelPreviousScores = props => {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
           className: "monsterinsights-headline-analyzer-previous-scores",
           children: previousScores.map((headlineData, index) => {
-            if (index < 10 && ("undefined" !== typeof headlineData.sentence || "undefined" !== typeof headlineData.score)) {
-              let classOnScore = headlineData.score < 40 ? 'red-bg' : headlineData.score <= 60 ? 'orange-bg' : 'green-bg';
+            if (index < 10 && ('undefined' !== typeof headlineData.sentence || 'undefined' !== typeof headlineData.score)) {
+              const classOnScore = headlineData.score < 40 ? 'red-bg' : headlineData.score <= 60 ? 'orange-bg' : 'green-bg';
               return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
                 onClick: () => setNewHeadlineData(index),
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("monsterinsights-headline-analyzer-score", classOnScore),
+                  className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('monsterinsights-headline-analyzer-score', classOnScore),
                   children: headlineData.score
                 }), headlineData.sentence]
               }, index);
-            } else {
-              return;
             }
           })
         })
@@ -3485,11 +3519,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelSearchPreview = props => {
-  const panelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Search Preview", "google-analytics-for-wordpress");
+  const panelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Search Preview', "google-analytics-for-wordpress");
   const descText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Here is how your headline will look like in google search results page.', "google-analytics-for-wordpress");
-  const postUrl = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.select)("core/editor").getPermalink();
+  const postUrl = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_3__.select)('core/editor').getPermalink();
   const postUrlAttribute = {
-    'href': postUrl
+    href: postUrl
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -3545,20 +3579,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelSentiment = props => {
-  const textNeutralSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline has a neutral sentiment.", "google-analytics-for-wordpress");
-  const textNeutralSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headlines that are strongly positive or negative tend to get more engagement then neutral ones.", "google-analytics-for-wordpress");
-  const textPositiveSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline has a positive sentiment.", "google-analytics-for-wordpress");
-  const textPositiveSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Positive headlines tend to get better engagement than neutral or negative ones.", "google-analytics-for-wordpress");
-  const textNegativeSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline has a negative sentiment.", "google-analytics-for-wordpress");
-  const textNegativeSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Negative headlines are attention-grabbing and tend to perform better than neutral ones.", "google-analytics-for-wordpress");
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Sentiment", "google-analytics-for-wordpress");
-  const sentiment = 'neu' === props.data.result.sentiment ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Neutral", "google-analytics-for-wordpress") : 'pos' === props.data.result.sentiment ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Positive", "google-analytics-for-wordpress") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Negative", "google-analytics-for-wordpress");
+  const textNeutralSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline has a neutral sentiment.', "google-analytics-for-wordpress");
+  const textNeutralSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headlines that are strongly positive or negative tend to get more engagement then neutral ones.', "google-analytics-for-wordpress");
+  const textPositiveSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline has a positive sentiment.', "google-analytics-for-wordpress");
+  const textPositiveSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Positive headlines tend to get better engagement than neutral or negative ones.', "google-analytics-for-wordpress");
+  const textNegativeSentiment = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline has a negative sentiment.', "google-analytics-for-wordpress");
+  const textNegativeSentimentGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Negative headlines are attention-grabbing and tend to perform better than neutral ones.', "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Sentiment', "google-analytics-for-wordpress");
+  const sentiment = 'neu' === props.data.result.sentiment ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Neutral', "google-analytics-for-wordpress") : 'pos' === props.data.result.sentiment ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Positive', "google-analytics-for-wordpress") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Negative', "google-analytics-for-wordpress");
   const sentimentIcon = 'neu' === props.data.result.sentiment ? _icons__WEBPACK_IMPORTED_MODULE_3__["default"].neutral : 'pos' === props.data.result.sentiment ? _icons__WEBPACK_IMPORTED_MODULE_3__["default"].smile : _icons__WEBPACK_IMPORTED_MODULE_3__["default"].negative;
   const classOnSentiment = 'neu' === props.data.result.sentiment ? 'orange' : 'pos' === props.data.result.sentiment ? 'green' : 'red';
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
       title: textPanelTitle,
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-panel-sentiment", "monsterinsights-headline-analyzer-panel-has-icon", classOnSentiment),
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-panel-sentiment', 'monsterinsights-headline-analyzer-panel-has-icon', classOnSentiment),
       icon: sentimentIcon,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h4", {
@@ -3602,7 +3636,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelStartEndWords = props => {
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Beginning & Ending Words", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Beginning & Ending Words', "google-analytics-for-wordpress");
   const words = props.data.result.input_array_orig;
   const guideLineText = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Most readers only look at the first and last 3 words of a headline before deciding whether to click.', "google-analytics-for-wordpress");
   let beginningWords = '';
@@ -3668,7 +3702,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const HeadlinePanelType = props => {
   const headlineTypes = props.data.result.headline_types.join(', ');
-  const panelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headline Type", "google-analytics-for-wordpress");
+  const panelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headline Type', "google-analytics-for-wordpress");
   const typePanelTitle = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
     className: "monsterinsights-headline-analyzer-panel-types-title",
     children: [panelTitle, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
@@ -3727,35 +3761,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelWordBalance = props => {
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Word Balance", "google-analytics-for-wordpress");
-  const textGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Compare the percentages of your results to the goal for each category and adjust as necessary.", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Word Balance', "google-analytics-for-wordpress");
+  const textGuideline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Compare the percentages of your results to the goal for each category and adjust as necessary.', "google-analytics-for-wordpress");
   const classOnScore = props.data.score < 40 ? 'red' : props.data.score <= 60 ? 'orange' : 'green';
   const classOnScoreBg = props.data.score < 40 ? 'red-bg' : props.data.score <= 60 ? 'orange-bg' : 'green-bg';
   const classOnCommonWords = 0 === props.data.result.common_words_per ? 'red' : props.data.result.common_words_per < 0.2 ? 'orange' : 'green';
   const classOnCommonWordsBg = 0 === props.data.result.common_words_per ? 'red-bg' : props.data.result.common_words_per < 0.2 ? 'orange-bg' : 'green-bg';
-  const textGetMoreClicks = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline would be more likely to get clicks if it had more uncommon words.", "google-analytics-for-wordpress");
-  const guideLineOnCommonWords = props.data.result.common_words_per < 0.2 ? textGetMoreClicks : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headlines with 20-30% common words are more likely to get clicks.", "google-analytics-for-wordpress");
+  const textGetMoreClicks = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline would be more likely to get clicks if it had more uncommon words.', "google-analytics-for-wordpress");
+  const guideLineOnCommonWords = props.data.result.common_words_per < 0.2 ? textGetMoreClicks : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headlines with 20–30% common words are more likely to get clicks.', "google-analytics-for-wordpress");
   const classOnUnCommonWords = 0 === props.data.result.uncommon_words_per ? 'red' : props.data.result.uncommon_words_per < 0.1 ? 'orange' : 'green';
   const classOnUnCommonWordsBg = 0 === props.data.result.uncommon_words_per ? 'red-bg' : props.data.result.uncommon_words_per < 0.1 ? 'orange-bg' : 'green-bg';
-  const guideLineOnUnCommonWords = props.data.result.uncommon_words_per < 0.1 ? textGetMoreClicks : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headlines with uncommon words are more likely to get clicks.", "google-analytics-for-wordpress");
+  const guideLineOnUnCommonWords = props.data.result.uncommon_words_per < 0.1 ? textGetMoreClicks : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headlines with uncommon words are more likely to get clicks.', "google-analytics-for-wordpress");
   const classOnEmotionalWords = 0 === props.data.result.emotion_words_per ? 'red' : props.data.result.emotion_words_per < 0.1 ? 'orange' : 'green';
   const classOnEmotionalWordsBg = 0 === props.data.result.emotion_words_per ? 'red-bg' : props.data.result.emotion_words_per < 0.1 ? 'orange-bg' : 'green-bg';
-  const guideLineOnEmotionalWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Emotionally triggered headlines are likely to drive more clicks.", "google-analytics-for-wordpress");
+  const guideLineOnEmotionalWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Emotionally triggered headlines are likely to drive more clicks.', "google-analytics-for-wordpress");
   const classOnPowerWords = 0 === props.data.result.power_words.length ? 'orange' : 'green';
   const classOnPowerWordsBg = 0 === props.data.result.power_words.length ? 'orange' : 'green-bg';
-  const guideLineOnPowerWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headlines with Power Words are more likely to get clicks.", "google-analytics-for-wordpress");
-  const textCommonWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Common Words", "google-analytics-for-wordpress");
-  const textTwentyThirty = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("20-30%", "google-analytics-for-wordpress");
-  const textUncommonWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Uncommon Words", "google-analytics-for-wordpress");
-  const textTenTwenty = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("10-20%", "google-analytics-for-wordpress");
-  const textEmotionalWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Emotional Words", "google-analytics-for-wordpress");
-  const textTenFifteen = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("10-15%", "google-analytics-for-wordpress");
-  const textPowerWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Power Words", "google-analytics-for-wordpress");
-  const textLeastOne = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("At least one", "google-analytics-for-wordpress");
+  const guideLineOnPowerWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headlines with Power Words are more likely to get clicks.', "google-analytics-for-wordpress");
+  const textCommonWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Common Words', "google-analytics-for-wordpress");
+  const textTwentyThirty = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('20–30%', "google-analytics-for-wordpress");
+  const textUncommonWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Uncommon Words', "google-analytics-for-wordpress");
+  const textTenTwenty = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('10–20%', "google-analytics-for-wordpress");
+  const textEmotionalWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Emotional Words', "google-analytics-for-wordpress");
+  const textTenFifteen = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('10–15%', "google-analytics-for-wordpress");
+  const textPowerWords = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Power Words', "google-analytics-for-wordpress");
+  const textLeastOne = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('At least one', "google-analytics-for-wordpress");
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
       title: textPanelTitle,
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-panel-word-balance", "monsterinsights-headline-analyzer-panel-has-icon", classOnScore),
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-panel-word-balance', 'monsterinsights-headline-analyzer-panel-has-icon', classOnScore),
       icon: 'green' === classOnScore ? _icons__WEBPACK_IMPORTED_MODULE_3__["default"].check : _icons__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h4", {
@@ -3834,7 +3868,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlinePanelWordCount = props => {
-  const textWordCount = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Word Count", "google-analytics-for-wordpress");
+  const textWordCount = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Word Count', "google-analytics-for-wordpress");
   const wordLength = props.data.result.word_count;
   const barScore = wordLength >= 10 ? 100 : Math.round(wordLength * 10);
   let classOnLength = '';
@@ -3844,33 +3878,33 @@ const HeadlinePanelWordCount = props => {
   if (wordLength <= 4) {
     classOnLength = 'red';
     barColor = '#EB5757';
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Not Enough Words", "google-analytics-for-wordpress");
-    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline doesn’t use enough words. You have more space to add keywords and power words to improve your SEO and get more engagement.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Not Enough Words', "google-analytics-for-wordpress");
+    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline doesn’t use enough words. You have more space to add keywords and power words to improve your SEO and get more engagement.', "google-analytics-for-wordpress");
   } else if (wordLength >= 5 && wordLength <= 9) {
     classOnLength = 'green';
     barColor = '#1EC185';
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Good", "google-analytics-for-wordpress");
-    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline has the right amount of words. Headlines are more likely to be clicked on in search results if they have about 6 words.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Good', "google-analytics-for-wordpress");
+    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline has the right amount of words. Headlines are more likely to be clicked on in search results if they have about 6 words.', "google-analytics-for-wordpress");
   } else if (wordLength >= 10 && wordLength <= 11) {
     classOnLength = 'orange';
     barColor = '#F2994A';
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Reduce Word Count", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Reduce Word Count', "google-analytics-for-wordpress");
   } else {
     classOnLength = 'red';
     barColor = '#EB5757';
-    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Too Many Words", "google-analytics-for-wordpress");
-    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Your headline has too many words. Long headlines will get cut off in search results and won’t get as many clicks.", "google-analytics-for-wordpress");
+    statusOnLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Too Many Words', "google-analytics-for-wordpress");
+    descOnWordLength = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your headline has too many words. Long headlines will get cut off in search results and won’t get as many clicks.', "google-analytics-for-wordpress");
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
       title: textWordCount,
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-panel-word-count", "monsterinsights-headline-analyzer-panel-has-icon", classOnLength),
+      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-panel-word-count', 'monsterinsights-headline-analyzer-panel-has-icon', classOnLength),
       icon: 'green' === classOnLength ? _icons__WEBPACK_IMPORTED_MODULE_3__["default"].check : _icons__WEBPACK_IMPORTED_MODULE_3__["default"].warning,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelRow, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "monsterinsights-headline-analyzer-pie-chart-container",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            className: classnames__WEBPACK_IMPORTED_MODULE_4___default()("monsterinsights-headline-analyzer-word-length", classOnLength),
+            className: classnames__WEBPACK_IMPORTED_MODULE_4___default()('monsterinsights-headline-analyzer-word-length', classOnLength),
             children: wordLength
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_HeadlinePieChart__WEBPACK_IMPORTED_MODULE_5__["default"], {
             barScore: barScore,
@@ -3939,7 +3973,7 @@ const HeadlinePieChart = props => {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "monsterinsights-donut",
         style: {
-          width: width,
+          width,
           paddingBottom: width,
           backgroundColor: '#f2f2f2'
         },
@@ -4009,15 +4043,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlineSwitcher = props => {
-  const textCurrentScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Current Score", "google-analytics-for-wordpress");
-  const textNewHeadline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Try New Headline", "google-analytics-for-wordpress");
-  const [activeTab, setActiveTab] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)("current-score");
-  const activeCurrentScore = () => setActiveTab("current-score");
-  const activeNewHeadline = () => setActiveTab("new-headline");
+  const textCurrentScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Current Score', "google-analytics-for-wordpress");
+  const textNewHeadline = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Try New Headline', "google-analytics-for-wordpress");
+  const [activeTab, setActiveTab] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)('current-score');
+  const activeCurrentScore = () => setActiveTab('current-score');
+  const activeNewHeadline = () => setActiveTab('new-headline');
   const isNewData = 'undefined' !== typeof props.analyzer.isNewData ? props.analyzer.isNewData : false;
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     props.setAnalyzer({
-      activeTab: activeTab
+      activeTab
     });
   }, [activeTab]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
@@ -4025,14 +4059,14 @@ const HeadlineSwitcher = props => {
       className: "monsterinsights-inline-buttons",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: activeCurrentScore,
-        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("monsterinsights-switcher-button", {
-          "active": "current-score" === activeTab
+        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('monsterinsights-switcher-button', {
+          active: 'current-score' === activeTab
         }),
         children: textCurrentScore
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
         onClick: activeNewHeadline,
-        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()("monsterinsights-switcher-button", {
-          "active": "new-headline" === activeTab
+        className: classnames__WEBPACK_IMPORTED_MODULE_2___default()('monsterinsights-switcher-button', {
+          active: 'new-headline' === activeTab
         }),
         children: textNewHeadline
       })]
@@ -4080,8 +4114,8 @@ __webpack_require__.r(__webpack_exports__);
 
 const HeadlineTabCurrentScore = props => {
   const postTitle = props.analyzer.currentHeadlineData.sentence;
-  const textScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Score", "google-analytics-for-wordpress");
-  const textGuideLine = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("A good score is between 40 and 60. For best results, you should strive for 70 and above.", "google-analytics-for-wordpress");
+  const textScore = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Score', "google-analytics-for-wordpress");
+  const textGuideLine = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('A good score is between 40 and 60. For best results, you should strive for 70 and above.', "google-analytics-for-wordpress");
   const currentScore = props.analyzer.currentHeadlineData.score;
   const classOnScore = currentScore < 40 ? 'red' : currentScore <= 60 ? 'orange' : 'green';
   const barColor = 'red' === classOnScore ? '#EB5757' : 'orange' === classOnScore ? '#F2994A' : '#1EC185';
@@ -4097,7 +4131,7 @@ const HeadlineTabCurrentScore = props => {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "monsterinsights-headline-analyzer-pie-chart-container",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()("monsterinsights-headline-analyzer-current-score", classOnScore),
+              className: classnames__WEBPACK_IMPORTED_MODULE_3___default()('monsterinsights-headline-analyzer-current-score', classOnScore),
               children: currentScore
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_HeadlinePieChart__WEBPACK_IMPORTED_MODULE_4__["default"], {
               barScore: currentScore,
@@ -4141,9 +4175,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlineTabNewScore = props => {
-  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Try New Headline", "google-analytics-for-wordpress");
-  const textNewHeadlineInputLabel = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Enter a different headline than your post title to see how it compares.", "google-analytics-for-wordpress");
-  const textAnalyze = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Analyze", "google-analytics-for-wordpress");
+  const textPanelTitle = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Try New Headline', "google-analytics-for-wordpress");
+  const textNewHeadlineInputLabel = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Enter a different headline than your post title to see how it compares.', "google-analytics-for-wordpress");
+  const textAnalyze = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Analyze', "google-analytics-for-wordpress");
   const newHeadline = 'undefined' !== typeof props.analyzer.newHeadline ? props.analyzer.newHeadline : '';
   const previousScores = 'undefined' !== typeof props.analyzer.previousHeadlinesData ? props.analyzer.previousHeadlinesData : [];
   const isDisabled = newHeadline ? false : true;
@@ -4152,7 +4186,7 @@ const HeadlineTabNewScore = props => {
     if (!headline) {
       return;
     }
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('_ajax_nonce', monsterinsights_gutenberg_tool_vars.nonce);
     formData.append('action', 'monsterinsights_gutenberg_headline_analyzer_get_results');
     formData.append('dataType', 'json');
@@ -4186,13 +4220,15 @@ const HeadlineTabNewScore = props => {
               label: textNewHeadlineInputLabel,
               value: newHeadline,
               onChange: newValue => {
-                if (" " !== newValue) {
+                if (' ' !== newValue) {
                   props.setAnalyzer({
                     newHeadline: newValue
                   });
                 }
               },
-              className: "monsterinsights-headline-analyzer-input-field"
+              className: "monsterinsights-headline-analyzer-input-field",
+              __nextHasNoMarginBottom: true,
+              __next40pxDefaultSize: true
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
               className: "monsterinsights-headline-analyzer-button",
               isPrimary: true,
@@ -4233,9 +4269,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const HeadlineWordsBlock = props => {
-  const textGoal = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Goal: ", "google-analytics-for-wordpress");
+  const textGoal = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Goal:', "google-analytics-for-wordpress");
   const progressBarStyle = {
-    width: props.value + "%"
+    width: props.value + '%'
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "monsterinsights-headline-analyzer-words-block",
@@ -4244,7 +4280,7 @@ const HeadlineWordsBlock = props => {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "monsterinsights-headline-analyzer-words-block-data",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
-        className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("monsterinsights-headline-analyzer-words-block-percentage", props.classOnScore),
+        className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('monsterinsights-headline-analyzer-words-block-percentage', props.classOnScore),
         children: [props.value, "%"]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("span", {
         className: "monsterinsights-headline-analyzer-words-block-goal",
@@ -4256,7 +4292,7 @@ const HeadlineWordsBlock = props => {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
           className: "monsterinsights-headline-analyzer-progressbar-bg"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
-          className: classnames__WEBPACK_IMPORTED_MODULE_1___default()("monsterinsights-headline-analyzer-progressbar-part", props.classOnScoreBg),
+          className: classnames__WEBPACK_IMPORTED_MODULE_1___default()('monsterinsights-headline-analyzer-progressbar-part', props.classOnScoreBg),
           style: progressBarStyle
         })]
       })]
@@ -4423,15 +4459,15 @@ __webpack_require__.r(__webpack_exports__);
 
 const MonsterInsightsHeadlineAnalyzer = props => {
   const postTitle = (0,_wordpress_data__WEBPACK_IMPORTED_MODULE_4__.useSelect)(select => select('core/editor').getEditedPostAttribute('title'));
-  const textHeadlineAnalyzer = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Headline Analyzer", "google-analytics-for-wordpress");
-  const emptyTitleWarning = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Write your post title to see the analyzer data. This Headline Analyzer tool enables you to write irresistible SEO headlines that drive traffic, shares, and rank better in search results.", "google-analytics-for-wordpress");
+  const textHeadlineAnalyzer = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Headline Analyzer', "google-analytics-for-wordpress");
+  const emptyTitleWarning = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Write your post title to see the analyzer data. This Headline Analyzer tool enables you to write irresistible SEO headlines that drive traffic, shares, and rank better in search results.', "google-analytics-for-wordpress");
   const [analyzer, setAnalyzer] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)({});
   const pinnedIcon = document.querySelector(`.components-button[aria-label='${textHeadlineAnalyzer}'] svg`);
   const previousScores = 'undefined' !== typeof analyzer.previousHeadlinesData ? analyzer.previousHeadlinesData : [];
   const notice = (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.sprintf)((0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('This headline analyzer is part of MonsterInsights to help you increase your traffic. See your %1swebsite traffic reports%2s.', "google-analytics-for-wordpress"), `<a href="${monsterinsights_gutenberg_tool_vars.reports_url}" className="monsterinsights-headline-analyzer-link">`, '</a>');
   const wrapper = document.querySelector('.monsterinsights-headline-analyzer-wrapper');
   if (pinnedIcon) {
-    let scoreTag = document.createElement('span');
+    const scoreTag = document.createElement('span');
     if (analyzer.dataExist && 'undefined' !== typeof analyzer.currentHeadlineData.score) {
       const currentScore = analyzer.currentHeadlineData.score;
       const classOnScore = currentScore < 40 ? 'red' : currentScore <= 60 ? 'orange' : 'green';
@@ -4456,7 +4492,7 @@ const MonsterInsightsHeadlineAnalyzer = props => {
     const headingElements = wrapper.parentNode.querySelectorAll('.components-panel__header');
     if (headingElements) {
       headingElements.forEach(function (element) {
-        let button = element.querySelector('[aria-pressed="true"]');
+        const button = element.querySelector('[aria-pressed="true"]');
         if (button && null !== button && null !== button.offsetParent) {
           button.style.display = 'none';
         }
@@ -4472,13 +4508,13 @@ const MonsterInsightsHeadlineAnalyzer = props => {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     clearTimeout(window.HaPostTitleTimer);
     window.HaPostTitleTimer = setTimeout(() => {
-      let formData = new FormData();
+      const formData = new FormData();
       formData.append('_ajax_nonce', monsterinsights_gutenberg_tool_vars.nonce);
       formData.append('action', 'monsterinsights_gutenberg_headline_analyzer_get_results');
       formData.append('dataType', 'json');
       formData.append('q', postTitle);
       axios__WEBPACK_IMPORTED_MODULE_6__["default"].post(monsterinsights_gutenberg_tool_vars.ajaxurl, formData).then(response => {
-        let newAnalyzerData = {
+        const newAnalyzerData = {
           dataExist: false
         };
         if (response.data.data.analysed) {
@@ -4488,14 +4524,13 @@ const MonsterInsightsHeadlineAnalyzer = props => {
           if ('undefined' !== typeof analyzer.headlineData) {
             newAnalyzerData.previousHeadlinesData = [analyzer.headlineData, ...previousScores];
           }
-          ;
         }
         setAnalyzer({
           ...analyzer,
           ...newAnalyzerData
         });
       }).catch(error => {
-        let newAnalyzerData = {
+        const newAnalyzerData = {
           dataExist: false
         };
         setAnalyzer({
@@ -4552,7 +4587,7 @@ const MonsterInsightsHeadlineAnalyzer = props => {
 
 // register & render editor sidebar plugin for post_type `post` only
 if ('undefined' !== typeof monsterinsights_gutenberg_tool_vars && monsterinsights_gutenberg_tool_vars.allowed_post_types.includes(monsterinsights_gutenberg_tool_vars.current_post_type) && monsterinsights_gutenberg_tool_vars.is_headline_analyzer_enabled) {
-  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__.registerPlugin)("monsterinsights-headline-analyzer", {
+  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_2__.registerPlugin)('monsterinsights-headline-analyzer', {
     icon: _icons__WEBPACK_IMPORTED_MODULE_5__["default"].headlineBlack,
     render: MonsterInsightsHeadlineAnalyzer
   });

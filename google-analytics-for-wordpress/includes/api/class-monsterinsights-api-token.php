@@ -80,12 +80,22 @@ class MonsterInsights_API_Token {
 			);
 		}
 
-		// Build payload - minimal data needed for Laravel validation.
+		// Build payload - minimal data needed for validation.
 		$timestamp  = time();
 		$expires_at = $timestamp + self::TOKEN_EXPIRATION;
 
+		// Include the license key so the AI Chat API can determine the plan
+		// without a DB lookup. Lite users have no license key.
+		$license_key = '';
+		if ( monsterinsights_is_pro_version() ) {
+			$license_key = $network
+				? MonsterInsights()->license->get_network_license_key()
+				: MonsterInsights()->license->get_site_license_key();
+		}
+
 		$payload = array(
 			'site_url'   => $network ? network_admin_url() : home_url(),
+			'license'    => $license_key ?: '',
 			'issued_at'  => $timestamp,
 			'expires_at' => $expires_at,
 		);

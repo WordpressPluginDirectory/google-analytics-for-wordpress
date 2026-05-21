@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class MonsterInsights_Google_Ads_Pax extends MonsterInsights_Ads_Tracking_Provider {
 
 	/**

@@ -7,27 +7,27 @@
     "file": "css/WelcomeOverlay.css",
     "src": "WelcomeOverlay.css"
   },
-  "_LaunchWizardButton-d437c323.min.js": {
+  "_LaunchWizardButton-b2046dc6.min.js": {
     "css": [
       "css/LaunchWizardButton.css"
     ],
-    "file": "js/chunks/LaunchWizardButton-d437c323.min.js",
+    "file": "js/chunks/LaunchWizardButton-b2046dc6.min.js",
     "imports": [
-      "_vendor-65891c97.min.js"
+      "_vendor-1d873285.min.js"
     ]
   },
-  "_WelcomeOverlay-37f4de9d.min.js": {
+  "_WelcomeOverlay-871e315c.min.js": {
     "css": [
       "css/WelcomeOverlay.css"
     ],
-    "file": "js/chunks/WelcomeOverlay-37f4de9d.min.js",
+    "file": "js/chunks/WelcomeOverlay-871e315c.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js",
-      "_LaunchWizardButton-d437c323.min.js"
+      "_vendor-1d873285.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js",
+      "_LaunchWizardButton-b2046dc6.min.js"
     ]
   },
-  "_index-fd54ed60.min.js": {
+  "_index-63fc8c6c.min.js": {
     "assets": [
       "img/logo-MonsterInsights.png",
       "img/logo-MonsterInsights@2x.png",
@@ -35,7 +35,6 @@
       "img/logo-monsterinsights-pro.svg",
       "img/logo-monsterinsights-plus.svg",
       "img/icon-info.svg",
-      "img/mascot.png",
       "fonts/Roboto-Regular.woff2",
       "fonts/Roboto-Bold.woff2",
       "fonts/lato-regular-webfont.woff",
@@ -57,34 +56,34 @@
     "css": [
       "css/index.css"
     ],
-    "file": "js/chunks/index-fd54ed60.min.js",
+    "file": "js/chunks/index-63fc8c6c.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js",
-      "_LaunchWizardButton-d437c323.min.js"
+      "_vendor-1d873285.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js",
+      "_LaunchWizardButton-b2046dc6.min.js"
     ]
   },
-  "_monsterinsights-helper-plugin-4cb4e554.min.js": {
-    "file": "js/chunks/monsterinsights-helper-plugin-4cb4e554.min.js",
+  "_monsterinsights-helper-plugin-d5dab654.min.js": {
+    "file": "js/chunks/monsterinsights-helper-plugin-d5dab654.min.js",
     "imports": [
-      "_vendor-65891c97.min.js"
+      "_vendor-1d873285.min.js"
     ]
   },
-  "_report-table-helper-ef7686bc.min.js": {
-    "file": "js/chunks/report-table-helper-ef7686bc.min.js",
+  "_report-table-helper-bff2a505.min.js": {
+    "file": "js/chunks/report-table-helper-bff2a505.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js"
+      "_vendor-1d873285.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js"
     ]
   },
-  "_vendor-65891c97.min.js": {
+  "_vendor-1d873285.min.js": {
     "assets": [
       "img/sucker.png"
     ],
     "css": [
       "css/vendor.css"
     ],
-    "file": "js/chunks/vendor-65891c97.min.js"
+    "file": "js/chunks/vendor-1d873285.min.js"
   },
   "index.css": {
     "file": "css/index.css",
@@ -254,18 +253,6 @@
     "file": "img/badge-light.svg",
     "src": "src/assets/img/badge-light.svg"
   },
-  "src/assets/img/charlie-ai.svg": {
-    "file": "img/charlie-ai.svg",
-    "src": "src/assets/img/charlie-ai.svg"
-  },
-  "src/assets/img/charlie-front.svg": {
-    "file": "img/charlie-front.svg",
-    "src": "src/assets/img/charlie-front.svg"
-  },
-  "src/assets/img/charlie-with-heart.svg": {
-    "file": "img/charlie-with-heart.svg",
-    "src": "src/assets/img/charlie-with-heart.svg"
-  },
   "src/assets/img/check.svg": {
     "file": "img/check.svg",
     "src": "src/assets/img/check.svg"
@@ -277,10 +264,6 @@
   "src/assets/img/edd-xsell-banner.svg": {
     "file": "img/edd-xsell-banner.svg",
     "src": "src/assets/img/edd-xsell-banner.svg"
-  },
-  "src/assets/img/em-ai-insights.svg": {
-    "file": "img/em-ai-insights.svg",
-    "src": "src/assets/img/em-ai-insights.svg"
   },
   "src/assets/img/flags.png": {
     "file": "img/flags.png",
@@ -454,6 +437,10 @@
     "file": "img/membermouse-logo.png",
     "src": "src/assets/img/plugins/membermouse-logo.png"
   },
+  "src/assets/img/plugins/rewardswp-rewards-widget-promo.png": {
+    "file": "img/rewardswp-rewards-widget-promo.png",
+    "src": "src/assets/img/plugins/rewardswp-rewards-widget-promo.png"
+  },
   "src/assets/img/plugins/wishlistmember-logo.svg": {
     "file": "img/wishlistmember-logo.svg",
     "src": "src/assets/img/plugins/wishlistmember-logo.svg"
@@ -566,17 +553,9 @@
     "file": "img/reports-upsell-bg.png",
     "src": "src/assets/img/reports-upsell-bg.png"
   },
-  "src/assets/img/reports/lite-modals/bg-ai-insights.png": {
-    "file": "img/bg-ai-insights.png",
-    "src": "src/assets/img/reports/lite-modals/bg-ai-insights.png"
-  },
   "src/assets/img/reports/lite-modals/bg-cart-abandonment@2x.png": {
     "file": "img/bg-cart-abandonment@2x.png",
     "src": "src/assets/img/reports/lite-modals/bg-cart-abandonment@2x.png"
-  },
-  "src/assets/img/reports/lite-modals/bg-conversations-ai.png": {
-    "file": "img/bg-conversations-ai.png",
-    "src": "src/assets/img/reports/lite-modals/bg-conversations-ai.png"
   },
   "src/assets/img/reports/lite-modals/bg-countries.png": {
     "file": "img/bg-countries.png",
@@ -930,26 +909,6 @@
     "isEntry": true,
     "src": "src/modules/admin/admin.js"
   },
-  "src/modules/feature-feedback/icons/nps/rate-1.svg": {
-    "file": "img/rate-1.svg",
-    "src": "src/modules/feature-feedback/icons/nps/rate-1.svg"
-  },
-  "src/modules/feature-feedback/icons/nps/rate-2.svg": {
-    "file": "img/rate-2.svg",
-    "src": "src/modules/feature-feedback/icons/nps/rate-2.svg"
-  },
-  "src/modules/feature-feedback/icons/nps/rate-3.svg": {
-    "file": "img/rate-3.svg",
-    "src": "src/modules/feature-feedback/icons/nps/rate-3.svg"
-  },
-  "src/modules/feature-feedback/icons/nps/rate-4.svg": {
-    "file": "img/rate-4.svg",
-    "src": "src/modules/feature-feedback/icons/nps/rate-4.svg"
-  },
-  "src/modules/feature-feedback/icons/nps/rate-5.svg": {
-    "file": "img/rate-5.svg",
-    "src": "src/modules/feature-feedback/icons/nps/rate-5.svg"
-  },
   "src/modules/reports/reports.css": {
     "file": "css/reports.css",
     "src": "src/modules/reports/reports.css"
@@ -958,14 +917,6 @@
     "assets": [
       "img/hero-image.jpg",
       "img/monsterinsights-logo.svg",
-      "img/rate-1.svg",
-      "img/rate-2.svg",
-      "img/rate-3.svg",
-      "img/rate-4.svg",
-      "img/rate-5.svg",
-      "img/charlie-with-heart.svg",
-      "img/charlie-front.svg",
-      "img/charlie-ai.svg",
       "img/flags.png",
       "img/thankyou-bg.png",
       "img/dashboard-preview.png",
@@ -1012,8 +963,6 @@
       "img/custom-events-report-screen.png",
       "img/social-media-report@2x.png",
       "img/exceptions-report.png",
-      "img/bg-ai-insights.png",
-      "img/bg-conversations-ai.png",
       "img/report-arrow-down-red.png",
       "img/report-arrow-down-green.png",
       "img/report-arrow-up-green.png",
@@ -1031,11 +980,11 @@
     ],
     "file": "js/reports.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_report-table-helper-ef7686bc.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js",
-      "_index-fd54ed60.min.js",
-      "_LaunchWizardButton-d437c323.min.js"
+      "_vendor-1d873285.min.js",
+      "_report-table-helper-bff2a505.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js",
+      "_index-63fc8c6c.min.js",
+      "_LaunchWizardButton-b2046dc6.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/reports/reports.js"
@@ -1046,6 +995,7 @@
   },
   "src/modules/settings/settings.js": {
     "assets": [
+      "img/rewardswp-rewards-widget-promo.png",
       "img/woo-insights-save-60-badge.svg",
       "img/woo-insights-ecommerce-report-image.png",
       "img/woo-insights-sessions-revenue.png",
@@ -1157,8 +1107,6 @@
       "img/custom-events-report-screen.png",
       "img/social-media-report@2x.png",
       "img/exceptions-report.png",
-      "img/bg-ai-insights.png",
-      "img/bg-conversations-ai.png",
       "img/icon-warning.png",
       "img/monsterinsights-setup-checklist-site-note.png",
       "img/icon-site-notes-settings.svg",
@@ -1192,11 +1140,11 @@
     ],
     "file": "js/settings.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js",
-      "_LaunchWizardButton-d437c323.min.js",
-      "_WelcomeOverlay-37f4de9d.min.js",
-      "_index-fd54ed60.min.js"
+      "_vendor-1d873285.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js",
+      "_LaunchWizardButton-b2046dc6.min.js",
+      "_WelcomeOverlay-871e315c.min.js",
+      "_index-63fc8c6c.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/settings/settings.js"
@@ -1257,8 +1205,6 @@
       "img/custom-events-report-screen.png",
       "img/social-media-report@2x.png",
       "img/exceptions-report.png",
-      "img/bg-ai-insights.png",
-      "img/bg-conversations-ai.png",
       "img/report-arrow-down-red.png",
       "img/report-arrow-down-green.png",
       "img/report-arrow-up-green.png",
@@ -1277,9 +1223,9 @@
     ],
     "file": "js/widget.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_report-table-helper-ef7686bc.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js"
+      "_vendor-1d873285.min.js",
+      "_report-table-helper-bff2a505.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/widget/widget.js"
@@ -1329,10 +1275,10 @@
     ],
     "file": "js/wizard.min.js",
     "imports": [
-      "_vendor-65891c97.min.js",
-      "_WelcomeOverlay-37f4de9d.min.js",
-      "_monsterinsights-helper-plugin-4cb4e554.min.js",
-      "_LaunchWizardButton-d437c323.min.js"
+      "_vendor-1d873285.min.js",
+      "_WelcomeOverlay-871e315c.min.js",
+      "_monsterinsights-helper-plugin-d5dab654.min.js",
+      "_LaunchWizardButton-b2046dc6.min.js"
     ],
     "isEntry": true,
     "src": "src/modules/wizard-onboarding/wizard.js"
