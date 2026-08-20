@@ -640,7 +640,9 @@ function monsterinsights_year_in_review_notification() {
 		$notification['content'] = esc_html__( 'See how your website performed this year and find tips along the way to help grow even more in 2024!', 'google-analytics-for-wordpress' );
 		$notification['btns']    = array(
 			'learn_more' => array(
-				'url'  => esc_url( admin_url( 'admin.php?page=monsterinsights_reports#/year-in-review' ) ),
+				// No year-in-review route exists in the report app; send readers
+				// to the overview report rather than a hash nothing resolves.
+				'url'  => esc_url( admin_url( 'admin.php?page=monsterinsights_overview_report' ) ),
 				'text' => esc_html__( 'Learn More', 'google-analytics-for-wordpress' ),
 			),
 		);

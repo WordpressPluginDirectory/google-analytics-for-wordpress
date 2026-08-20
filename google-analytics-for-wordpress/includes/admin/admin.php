@@ -83,8 +83,7 @@ function monsterinsights_admin_menu()
 		// Hide WordPress admin notices on this page - Vue app handles its own notifications
 		echo '<style>.monsterinsights_page_monsterinsights_custom_dashboard .notice:not(.monsterinsights-notice),.monsterinsights_page_monsterinsights_custom_dashboard .error:not(.monsterinsights-notice),.monsterinsights_page_monsterinsights_custom_dashboard .updated:not(.monsterinsights-notice){display:none !important;}</style>';
 		echo '<div id="monsterinsights-custom-dashboard-app" class="mi-custom-dashboard-app">';
-		echo '<div class="mi-app-loading"><span class="dashicons dashicons-update mi-spin"></span></div>';
-		echo '<style>.mi-app-loading{display:flex;align-items:center;justify-content:center;min-height:400px;}.mi-spin{animation:mi-spin 1s linear infinite;font-size:40px;width:40px;height:40px;color:#338eef;}@keyframes mi-spin{to{transform:rotate(360deg);}}</style>';
+		monsterinsights_app_loading_placeholder();
 		echo '</div>';
 	}
 
@@ -1201,6 +1200,20 @@ function monsterinsights_wpconsent_install_notice() {
 add_action( 'admin_notices', 'monsterinsights_wpconsent_install_notice' );
 
 /**
+ * Output the spinner shown while a Vue 3 admin app boots.
+ *
+ * Shared so screens that are only waiting (the legacy reports screen redirects
+ * on load) show the same thing as screens that are actually mounting an app.
+ *
+ * @return void
+ * @since 11.1.3
+ */
+function monsterinsights_app_loading_placeholder() {
+	echo '<div class="mi-app-loading"><span class="dashicons dashicons-update mi-spin"></span></div>';
+	echo '<style>.mi-app-loading{display:flex;align-items:center;justify-content:center;min-height:400px;}.mi-spin{animation:mi-spin 1s linear infinite;font-size:40px;width:40px;height:40px;color:#338eef;}@keyframes mi-spin{to{transform:rotate(360deg);}}</style>';
+}
+
+/**
  * Add Overview report page (Vue 3 app)
  */
 function monsterinsights_overview_report_page() {
@@ -1208,8 +1221,7 @@ function monsterinsights_overview_report_page() {
 	// Hide WordPress admin notices on this page - Vue app handles its own notifications
 	echo '<style>.monsterinsights_page .notice:not(.monsterinsights-notice),.monsterinsights_page .error:not(.monsterinsights-notice),.monsterinsights_page .updated:not(.monsterinsights-notice){display:none !important;}</style>';
 	echo '<div id="monsterinsights-overview-report-app">';
-	echo '<div class="mi-app-loading"><span class="dashicons dashicons-update mi-spin"></span></div>';
-	echo '<style>.mi-app-loading{display:flex;align-items:center;justify-content:center;min-height:400px;}.mi-spin{animation:mi-spin 1s linear infinite;font-size:40px;width:40px;height:40px;color:#338eef;}@keyframes mi-spin{to{transform:rotate(360deg);}}</style>';
+	monsterinsights_app_loading_placeholder();
 	echo '</div>';
 }
 

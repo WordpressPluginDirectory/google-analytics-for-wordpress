@@ -199,6 +199,21 @@ class MonsterInsights_Rest_Routes {
 			}
 		}
 
+		// Withhold the keys only the settings screens consume. Runs last so the
+		// defaults filled in above are covered too.
+		if ( ! current_user_can( 'monsterinsights_save_settings' ) ) {
+			foreach ( monsterinsights_get_sensitive_settings() as $sensitive_setting ) {
+				// Empty the array fields rather than dropping them, so the
+				// settings UI keeps its expected shape.
+				if ( in_array( $sensitive_setting, $array_fields, true ) ) {
+					$options[ $sensitive_setting ] = array();
+					continue;
+				}
+
+				unset( $options[ $sensitive_setting ] );
+			}
+		}
+
 		wp_send_json( $options );
 
 	}
