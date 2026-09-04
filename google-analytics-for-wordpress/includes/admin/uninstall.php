@@ -5,6 +5,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Removes only the report-view telemetry options this PR introduced.
+ *
+ * ExactMetrics shares its option names with MonsterInsights, and its
+ * uninstall hooks can fire while a MonsterInsights install is still live on
+ * the same site (e.g. EM installed-but-inactive, then deleted). Calling the
+ * full monsterinsights_uninstall_remove_options() from EM's hooks would wipe
+ * that live MI install's db_version, license-adjacent, and display options.
+ * Scoped to just the two options EM's own recording code writes.
+ *
+ * @since 11.2.0
+ */
+function monsterinsights_uninstall_remove_report_view_telemetry_options() {
+	delete_option( 'monsterinsights_report_views' );
+	delete_option( 'monsterinsights_last_admin_seen' );
+}
+
+/**
  * Remove various options used in the plugin.
  */
 function monsterinsights_uninstall_remove_options() {
@@ -31,5 +48,6 @@ function monsterinsights_uninstall_remove_options() {
 
 	// Delete addons transient.
 	delete_transient( 'monsterinsights_addons' );
+	monsterinsights_uninstall_remove_report_view_telemetry_options();
 
 }

@@ -112,6 +112,8 @@ class MonsterInsights_Dashboard_Widget {
 	 * Load the widget content.
 	 */
 	public function dashboard_widget_content() {
+		MonsterInsights_Last_Seen::touch();
+
 		$is_authed = ( MonsterInsights()->auth->is_authed() || MonsterInsights()->auth->is_network_authed() );
 
 		if ( ! $is_authed ) {
@@ -253,6 +255,10 @@ class MonsterInsights_Dashboard_Widget {
 				}
 			}
 
+			// Empty in "Dashboard Widget Only" mode, which hides every widget CTA
+			// that links to a report — there is no reports screen to open.
+			$report_urls = monsterinsights_get_widget_report_urls();
+
 			wp_localize_script(
 				$handle,
 				'monsterinsights',
@@ -277,8 +283,9 @@ class MonsterInsights_Dashboard_Widget {
 					'versions'                  => monsterinsights_get_php_wp_version_warning_data(),
 					'plugin_version'            => MONSTERINSIGHTS_VERSION,
 					'is_admin'                  => true,
-					'reports_url'               => add_query_arg( 'page', 'monsterinsights_reports', admin_url( 'admin.php' ) ),
-					'overview_reports_url'      => add_query_arg( 'page', 'monsterinsights_overview_report', admin_url( 'admin.php' ) ),
+					'reports_url'               => $report_urls['reports_url'],
+					'overview_reports_url'      => $report_urls['overview_reports_url'],
+					'settings_url'              => add_query_arg( 'page', 'monsterinsights_settings', admin_url( 'admin.php' ) ),
 					'getting_started_url'       => is_multisite() ? network_admin_url( 'admin.php?page=monsterinsights_network#/about/getting-started' ) : admin_url( 'admin.php?page=monsterinsights_settings#/about/getting-started' ),
 					'wizard_url'                => monsterinsights_can_install_plugins() ? monsterinsights_get_onboarding_url() : '',
 					'formidableforms_installed' => $formidableforms_installed,
